@@ -1,0 +1,9 @@
+
+#include "../Configurations/Platforms/iOS.xcconfig"
+#include "../Configurations/Targets/App.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.zuhlke.ZeCamp
+DEVELOPMENT_TEAM = W46A5HMB5C
+INFOPLIST_FILE = ZeCamp/Info.plist
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+
