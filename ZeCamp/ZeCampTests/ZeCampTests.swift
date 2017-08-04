@@ -17,10 +17,11 @@ class ZeCampTests: XCTestCase {
             return
         }
         
-        XCTAssertNil(
-            project.range(of: "buildSettings\\s*=\\s*\\{[^\\}]*?=[^\\}]*?\\}", options: .regularExpression),
-            "There should be no build settings in the project file. Please move all settings to .xcconfig files."
-            )
+        if let range = project.range(of: "buildSettings\\s*=\\s*\\{[^\\}]*?=[^\\}]*?\\}", options: .regularExpression) {
+            let buildSettings = project.substring(with: range)
+            .replacingOccurrences(of: "\n", with: " ")
+            XCTFail("There should be no build settings in the project file. Please move all settings to .xcconfig files. Found: \(buildSettings)")
+        }
     }
     #endif
 
