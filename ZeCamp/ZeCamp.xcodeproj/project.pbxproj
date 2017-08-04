@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
+		246199BD1F30DC1800991818 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BC1F30DC1800991818 /* Schedule.swift */; };
+		24A559051F34E245009B9884 /* Sequence+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A559041F34E245009B9884 /* Sequence+groupBy.swift */; };
+		24E34C741F30EB7100076BD5 /* MyResources in Resources */ = {isa = PBXBuildFile; fileRef = 24E34C731F30EB7100076BD5 /* MyResources */; };
 		8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4291F2B3FF600A3E463 /* AppDelegate.swift */; };
 		8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4301F2B3FF600A3E463 /* Assets.xcassets */; };
 		8947A4341F2B3FF600A3E463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */; };
@@ -32,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
+		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		24A559041F34E245009B9884 /* Sequence+groupBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+groupBy.swift"; sourceTree = "<group>"; };
+		24E34C731F30EB7100076BD5 /* MyResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MyResources; sourceTree = "<group>"; };
 		8947A4261F2B3FF600A3E463 /* ZeCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4291F2B3FF600A3E463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8947A4301F2B3FF600A3E463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +90,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		246199B91F30D9E200991818 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				246199BA1F30DA1900991818 /* ScheduleScreen.swift */,
+				246199BC1F30DC1800991818 /* Schedule.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		24A559031F34E1DF009B9884 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24A559041F34E245009B9884 /* Sequence+groupBy.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8947A41D1F2B3FF600A3E463 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +131,9 @@
 		8947A4281F2B3FF600A3E463 /* ZeCamp */ = {
 			isa = PBXGroup;
 			children = (
+				24A559031F34E1DF009B9884 /* Extensions */,
+				24E34C731F30EB7100076BD5 /* MyResources */,
+				246199B91F30D9E200991818 /* Schedule */,
 				8947A4291F2B3FF600A3E463 /* AppDelegate.swift */,
 				8947A4301F2B3FF600A3E463 /* Assets.xcassets */,
 				8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */,
@@ -282,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E34C741F30EB7100076BD5 /* MyResources in Resources */,
 				8947A4341F2B3FF600A3E463 /* LaunchScreen.storyboard in Resources */,
 				8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */,
 			);
@@ -308,7 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */,
+				246199BD1F30DC1800991818 /* Schedule.swift in Sources */,
 				8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */,
+				24A559051F34E245009B9884 /* Sequence+groupBy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +405,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W46A5HMB5C;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -380,6 +417,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W46A5HMB5C;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
