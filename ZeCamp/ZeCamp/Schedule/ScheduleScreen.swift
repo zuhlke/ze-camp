@@ -53,11 +53,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
     let timeSlots: [TimeSlot]
     
     init(_ schedule: Schedule) {
-        self.timeSlots = schedule.events.group(by: { $0.date }).map { date, events in
-            return TimeSlot(date: date, events: events)
-        }.sorted(by: { timeSlot, otherTimeSlot in
-            return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending
-        })
+        self.timeSlots = schedule.asOrderedTimeSlots()
     }
     
     @available(iOS 2.0, *)
@@ -80,18 +76,61 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         let event = self.timeSlots[indexPath.section].events[indexPath.row]
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
-        let label = UILabel()
-        label.text = event.name
-        cell.addFillingSubview(label)
+        let stack = UIStackView()
+        stack.axis = .vertical
+        
+        let eventName = UILabel()
+        eventName.text = event.name
+        stack.addArrangedSubview(eventName)
+        
+        let eventDetails = UILabel()
+        eventDetails.text = "\(event.startTime) - \(event.endTime) - \(event.location)"
+        stack.addArrangedSubview(eventDetails)
+        
+        cell.addFillingSubview(stack)
+        
         return cell
+    }
+}
+
+//TODO: time zone?
+fileprivate let dayAndTimeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEEE, HH:mm"
+    return formatter
+}()
+
+
+fileprivate let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    return formatter
+}()
+
+fileprivate extension Event {
+    var startTime: String {
+        return timeFormatter.string(from: date)
+    }
+    
+    var endTime: String {
+        let endDate = Calendar.current.date(byAdding: .minute, value: durationInMinutes, to: date)!
+        return timeFormatter.string(from: endDate)
+    }
+}
+
+fileprivate extension Schedule {
+    
+    func asOrderedTimeSlots() -> [TimeSlot] {
+        return self.events.group(by: { $0.date }).map { date, events in
+            return TimeSlot(date: date, events: events)
+        }.sorted(by: { timeSlot, otherTimeSlot in
+            return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending
+        })
     }
 }
 
 fileprivate extension TimeSlot {
     var sectionTitle: String {
-        //TODO: time zone?
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, HH:mm"
-        return formatter.string(from: date)
+        return dayAndTimeFormatter.string(from: date)
     }
 }
