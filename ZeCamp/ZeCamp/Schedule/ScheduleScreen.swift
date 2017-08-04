@@ -55,7 +55,9 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
     init(_ schedule: Schedule) {
         self.timeSlots = schedule.events.group(by: { $0.date }).map { date, events in
             return TimeSlot(date: date, events: events)
-        }
+        }.sorted(by: { timeSlot, otherTimeSlot in
+            return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending
+        })
     }
     
     @available(iOS 2.0, *)
