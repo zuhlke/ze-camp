@@ -405,11 +405,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W46A5HMB5C;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -417,10 +412,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W46A5HMB5C;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
