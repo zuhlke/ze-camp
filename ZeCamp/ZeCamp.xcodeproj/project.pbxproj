@@ -307,6 +307,7 @@
 		891088151F4F14AA004148A4 /* ze-camp-assets */ = {
 			isa = PBXGroup;
 			children = (
+				8947A4301F2B3FF600A3E463 /* Assets.xcassets */,
 				891088171F4F14AA004148A4 /* Fonts */,
 			);
 			name = "ze-camp-assets";
@@ -353,7 +354,6 @@
 				24E34C731F30EB7100076BD5 /* MyResources */,
 				246199B91F30D9E200991818 /* Schedule */,
 				8947A4291F2B3FF600A3E463 /* AppDelegate.swift */,
-				8947A4301F2B3FF600A3E463 /* Assets.xcassets */,
 				8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */,
 				8947A4351F2B3FF600A3E463 /* Info.plist */,
 				8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */,
