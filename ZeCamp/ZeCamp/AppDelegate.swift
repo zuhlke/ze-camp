@@ -23,7 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let schedule = try! decoder.decode(Schedule.self, from: scheduleData)
         
         let scheduleScreen = ScheduleScreen(schedule: schedule)
-        window.rootViewController = scheduleScreen.makeViewController()
+        
+        let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
+        if #available(iOS 11.0, *) {
+            navigation.navigationBar.prefersLargeTitles = true
+            navigation.navigationBar.largeTitleTextAttributes = [
+                .font: UIFont(name: "AAZuehlkeMedium", size: 28)!
+            ]
+        }
+        
+        navigation.navigationBar.titleTextAttributes = [
+            .font: UIFont(name: "AAZuehlkeMedium", size: 18)!
+        ]
+        window.rootViewController = navigation
         
         return true
     }

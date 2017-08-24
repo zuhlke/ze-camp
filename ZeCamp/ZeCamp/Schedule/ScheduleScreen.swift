@@ -23,6 +23,7 @@ struct ScheduleScreen {
     
     func makeViewController() -> UIViewController {
         let viewController = UIViewController()
+        viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
 
         scheduleTable.strongDataSource = dataSource
