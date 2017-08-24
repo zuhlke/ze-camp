@@ -2,3 +2,6 @@
 xcuserdata
 *.xcuserstate
 *.xcscmblueprint
+Carthage
+!/carthage/
+!/carthage/*
