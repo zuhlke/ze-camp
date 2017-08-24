@@ -30,6 +30,9 @@ struct ScheduleScreen {
         scheduleTable.rowHeight = UITableViewAutomaticDimension
         scheduleTable.estimatedRowHeight = 50
         
+        let delegate = ScheduleDelegate()
+        delegate.viewController = viewController
+        scheduleTable.strongDelegate = delegate
         viewController.view.addFillingSubview(scheduleTable)
         
         return viewController
@@ -42,11 +45,32 @@ class ScheduleTableView: UITableView {
             dataSource = strongDataSource
         }
     }
+    fileprivate var strongDelegate: UITableViewDelegate? {
+        didSet {
+            delegate = strongDelegate
+        }
+    }
 }
 
 struct TimeSlot {
     let date: Date
     let events: [Event]
+}
+
+class ScheduleDelegate: NSObject, UITableViewDelegate {
+    weak var viewController: UIViewController?
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let emptyScreen = UIViewController()
+        emptyScreen.title = "Event"
+        emptyScreen.view.backgroundColor = .white
+        if #available(iOS 11.0, *) {
+            emptyScreen.navigationItem.largeTitleDisplayMode = .never
+        }
+        viewController?.navigationController?.pushViewController(emptyScreen, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
 
 class ScheduleDataSource: NSObject, UITableViewDataSource {
