@@ -16,6 +16,7 @@
 		8947A4341F2B3FF600A3E463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */; };
 		8947A43F1F2B3FF600A3E463 /* ZeCampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */; };
 		8947A44A1F2B3FF600A3E463 /* ZeCampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */; };
+		8B29E6A31F50CC7900F259AE /* Bundle+gitVersionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */; };
 		B49AEF531F4AC50400A4563B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49AEF2A1F4AC4E900A4563B /* RxSwift.framework */; };
 		B49AEF541F4AC50400A4563B /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B49AEF2A1F4AC4E900A4563B /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B49AEF571F4AC50C00A4563B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49AEF321F4AC4E900A4563B /* RxCocoa.framework */; };
@@ -244,6 +245,7 @@
 		898366391F2B4D0A007AA57A /* ZeCampTests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ZeCampTests.xcconfig; sourceTree = "<group>"; };
 		8983663A1F2B4EB5007AA57A /* ZeCampUITests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ZeCampUITests.xcconfig; sourceTree = "<group>"; };
 		8983663B1F2B4F32007AA57A /* UITest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UITest.xcconfig; sourceTree = "<group>"; };
+		8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+gitVersionString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				24A559041F34E245009B9884 /* Sequence+groupBy.swift */,
+				8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B29E6A31F50CC7900F259AE /* Bundle+gitVersionString.swift in Sources */,
 				246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */,
 				246199BD1F30DC1800991818 /* Schedule.swift in Sources */,
 				8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */,
