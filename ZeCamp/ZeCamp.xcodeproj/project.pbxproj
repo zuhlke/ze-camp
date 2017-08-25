@@ -433,6 +433,7 @@
 				8947A4221F2B3FF600A3E463 /* Sources */,
 				8947A4231F2B3FF600A3E463 /* Frameworks */,
 				8947A4241F2B3FF600A3E463 /* Resources */,
+				8B29E6A11F50C53B00F259AE /* Embed build information */,
 				07D0B07F1F439E3800CD1413 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -711,6 +712,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B29E6A11F50C53B00F259AE /* Embed build information */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed build information";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT `git rev-parse HEAD`\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\nstatus=$(git status --porcelain 2> /dev/null)\nif [[ \"$status\" != \"\" ]]; then\n    git_dirty='dirty'\nelse\n    git_dirty='clean'\nfi\n/usr/libexec/PlistBuddy -c \"Set :GIT_STATUS ${git_dirty}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8947A4221F2B3FF600A3E463 /* Sources */ = {
