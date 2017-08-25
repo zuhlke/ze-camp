@@ -7,6 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         NSLog("Starting ZeCamp, git commit: " + Bundle.main.gitVersionString!)
+        if let buddybuildNumber = Bundle.main.buddybuildBuildNumber {
+            NSLog("BuddyBuild build number %i", buddybuildNumber)
+        } else {
+            NSLog("Manual build")
+        }
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()

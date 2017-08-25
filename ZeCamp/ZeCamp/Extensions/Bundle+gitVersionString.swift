@@ -8,6 +8,9 @@ extension Bundle {
         }
         
         return "\(gitCommit) (\(gitStatus))"
-        
+    }
+    
+    var buddybuildBuildNumber: Int? {
+        return self.infoDictionary?["BUDDYBUILD_BUILD_NUMBER"] as? Int
     }
 }

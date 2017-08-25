@@ -729,7 +729,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT `git rev-parse --short HEAD`\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\nstatus=$(git status --porcelain 2> /dev/null)\nif [[ \"$status\" != \"\" ]]; then\n    git_dirty='dirty'\nelse\n    git_dirty='clean'\nfi\n/usr/libexec/PlistBuddy -c \"Set :GIT_STATUS ${git_dirty}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"";
+			shellScript = "/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT `git rev-parse --short HEAD`\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\nstatus=$(git status --porcelain 2> /dev/null)\nif [[ \"$status\" != \"\" ]]; then\n    git_dirty='dirty'\nelse\n    git_dirty='clean'\nfi\n/usr/libexec/PlistBuddy -c \"Set :GIT_STATUS ${git_dirty}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\n/usr/libexec/PlistBuddy -c \"Set :BUDDYBUILD_BUILD_NUMBER ${BUDDYBUILD_BUILD_NUMBER}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
