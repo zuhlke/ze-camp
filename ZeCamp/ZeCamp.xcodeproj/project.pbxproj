@@ -233,6 +233,7 @@
 		8947A4451F2B3FF600A3E463 /* ZeCampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeCampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeCampUITests.swift; sourceTree = "<group>"; };
 		8947A44B1F2B3FF600A3E463 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		897E31A61F6003E700360DC3 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = "<group>"; };
 		898366281F2B48F1007AA57A /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ZeCamp.xcconfig; sourceTree = "<group>"; };
 		8983662F1F2B4B7E007AA57A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -308,6 +309,7 @@
 				8947A43D1F2B3FF600A3E463 /* ZeCampTests */,
 				8947A4481F2B3FF600A3E463 /* ZeCampUITests */,
 				898366211F2B48BF007AA57A /* Configurations */,
+				897E31A61F6003E700360DC3 /* scripts */,
 				8947A4271F2B3FF600A3E463 /* Products */,
 				07D0B06B1F439D6100CD1413 /* Frameworks */,
 			);
@@ -729,7 +731,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/libexec/PlistBuddy -c \"Set :GIT_COMMIT `git rev-parse --short HEAD`\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\nstatus=$(git status --porcelain 2> /dev/null)\nif [[ \"$status\" != \"\" ]]; then\n    git_dirty='dirty'\nelse\n    git_dirty='clean'\nfi\n/usr/libexec/PlistBuddy -c \"Set :GIT_STATUS ${git_dirty}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"\n\n/usr/libexec/PlistBuddy -c \"Set :BUDDYBUILD_BUILD_NUMBER ${BUDDYBUILD_BUILD_NUMBER}\" \"${TARGET_BUILD_DIR}\"/\"${INFOPLIST_PATH}\"";
+			shellScript = "/bin/sh \"${SRCROOT}/../scripts/embedBuildInfo.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
