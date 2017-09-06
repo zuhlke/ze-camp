@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         window.rootViewController = UIViewController()
         
-        let scheduleUrl = Bundle.main.bundleURL.appendingPathComponent("MyResources").appendingPathComponent("schedule.json")
+        let scheduleUrl = Bundle.main.bundleURL.appendingPathComponent("Content").appendingPathComponent("schedule.json")
         
         guard let scheduleData = try? Data(contentsOf: scheduleUrl) else {
             return true
