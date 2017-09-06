@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        NSLog("Starting ZeCamp, git commit: " + Bundle.main.gitVersionString!)
+        NSLog("Starting ZeCamp, git commit: " + Bundle.main.shortCommitId!)
         if let buddybuildNumber = Bundle.main.buddybuildBuildNumber {
             NSLog("BuddyBuild build number %i", buddybuildNumber)
         } else {
