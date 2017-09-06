@@ -4,4 +4,7 @@
    <FileRef
       location = "group:ZeCamp/ZeCamp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:ZeCamp/../scripts">
+   </FileRef>
 </Workspace>
