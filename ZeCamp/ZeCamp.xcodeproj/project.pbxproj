@@ -10,7 +10,10 @@
 		246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
 		246199BD1F30DC1800991818 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BC1F30DC1800991818 /* Schedule.swift */; };
 		24A559051F34E245009B9884 /* Sequence+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A559041F34E245009B9884 /* Sequence+groupBy.swift */; };
-		24E34C741F30EB7100076BD5 /* MyResources in Resources */ = {isa = PBXBuildFile; fileRef = 24E34C731F30EB7100076BD5 /* MyResources */; };
+		8910881B1F4F14E6004148A4 /* AAZuehlke-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */; };
+		8910881C1F4F14E6004148A4 /* AAZuehlke.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088191F4F14AA004148A4 /* AAZuehlke.ttf */; };
+		8910881D1F4F14E6004148A4 /* AAZuehlkeMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */; };
+		891B19111F601F62005B51E2 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 891B19101F601E93005B51E2 /* Content */; };
 		8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4291F2B3FF600A3E463 /* AppDelegate.swift */; };
 		8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4301F2B3FF600A3E463 /* Assets.xcassets */; };
 		8947A4341F2B3FF600A3E463 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */; };
@@ -221,7 +224,10 @@
 		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		24A559041F34E245009B9884 /* Sequence+groupBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+groupBy.swift"; sourceTree = "<group>"; };
-		24E34C731F30EB7100076BD5 /* MyResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MyResources; sourceTree = "<group>"; };
+		891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AAZuehlke-italic.ttf"; sourceTree = "<group>"; };
+		891088191F4F14AA004148A4 /* AAZuehlke.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlke.ttf; sourceTree = "<group>"; };
+		8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlkeMedium.ttf; sourceTree = "<group>"; };
+		891B19101F601E93005B51E2 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
 		8947A4261F2B3FF600A3E463 /* ZeCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4291F2B3FF600A3E463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8947A4301F2B3FF600A3E463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,7 +239,6 @@
 		8947A4451F2B3FF600A3E463 /* ZeCampUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeCampUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeCampUITests.swift; sourceTree = "<group>"; };
 		8947A44B1F2B3FF600A3E463 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		897E31A61F6003E700360DC3 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = scripts; path = ../scripts; sourceTree = "<group>"; };
 		898366281F2B48F1007AA57A /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ZeCamp.xcconfig; sourceTree = "<group>"; };
 		8983662F1F2B4B7E007AA57A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -302,14 +307,96 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		891088151F4F14AA004148A4 /* ze-camp-assets */ = {
+			isa = PBXGroup;
+			children = (
+				8947A4301F2B3FF600A3E463 /* Assets.xcassets */,
+				891B19101F601E93005B51E2 /* Content */,
+				891088171F4F14AA004148A4 /* Fonts */,
+			);
+			name = "ze-camp-assets";
+			path = "Carthage/Checkouts/ze-camp-assets";
+			sourceTree = "<group>";
+		};
+		891088171F4F14AA004148A4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */,
+				891088191F4F14AA004148A4 /* AAZuehlke.ttf */,
+				8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8926091F1F60310900DB78E1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				24A559031F34E1DF009B9884 /* Extensions */,
+				246199B91F30D9E200991818 /* Schedule */,
+				8947A4291F2B3FF600A3E463 /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		892609331F60317900DB78E1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				8947A4351F2B3FF600A3E463 /* Info.plist */,
+				8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		892609341F6031F500DB78E1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		892609351F6031FD00DB78E1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				8947A4401F2B3FF600A3E463 /* Info.plist */,
+				898366391F2B4D0A007AA57A /* ZeCampTests.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		892609361F60320800DB78E1 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		892609371F60321100DB78E1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				8947A44B1F2B3FF600A3E463 /* Info.plist */,
+				8983663A1F2B4EB5007AA57A /* ZeCampUITests.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		892609391F60333100DB78E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8947A41D1F2B3FF600A3E463 = {
 			isa = PBXGroup;
 			children = (
 				8947A4281F2B3FF600A3E463 /* ZeCamp */,
 				8947A43D1F2B3FF600A3E463 /* ZeCampTests */,
 				8947A4481F2B3FF600A3E463 /* ZeCampUITests */,
+				891088151F4F14AA004148A4 /* ze-camp-assets */,
 				898366211F2B48BF007AA57A /* Configurations */,
-				897E31A61F6003E700360DC3 /* scripts */,
 				8947A4271F2B3FF600A3E463 /* Products */,
 				07D0B06B1F439D6100CD1413 /* Frameworks */,
 			);
@@ -328,14 +415,9 @@
 		8947A4281F2B3FF600A3E463 /* ZeCamp */ = {
 			isa = PBXGroup;
 			children = (
-				24A559031F34E1DF009B9884 /* Extensions */,
-				24E34C731F30EB7100076BD5 /* MyResources */,
-				246199B91F30D9E200991818 /* Schedule */,
-				8947A4291F2B3FF600A3E463 /* AppDelegate.swift */,
-				8947A4301F2B3FF600A3E463 /* Assets.xcassets */,
-				8947A4321F2B3FF600A3E463 /* LaunchScreen.storyboard */,
-				8947A4351F2B3FF600A3E463 /* Info.plist */,
-				8983662E1F2B4A73007AA57A /* ZeCamp.xcconfig */,
+				8926091F1F60310900DB78E1 /* Sources */,
+				892609391F60333100DB78E1 /* Resources */,
+				892609331F60317900DB78E1 /* Configurations */,
 			);
 			path = ZeCamp;
 			sourceTree = "<group>";
@@ -343,9 +425,8 @@
 		8947A43D1F2B3FF600A3E463 /* ZeCampTests */ = {
 			isa = PBXGroup;
 			children = (
-				8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */,
-				8947A4401F2B3FF600A3E463 /* Info.plist */,
-				898366391F2B4D0A007AA57A /* ZeCampTests.xcconfig */,
+				892609341F6031F500DB78E1 /* Sources */,
+				892609351F6031FD00DB78E1 /* Configurations */,
 			);
 			path = ZeCampTests;
 			sourceTree = "<group>";
@@ -353,9 +434,8 @@
 		8947A4481F2B3FF600A3E463 /* ZeCampUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */,
-				8947A44B1F2B3FF600A3E463 /* Info.plist */,
-				8983663A1F2B4EB5007AA57A /* ZeCampUITests.xcconfig */,
+				892609361F60320800DB78E1 /* Sources */,
+				892609371F60321100DB78E1 /* Configurations */,
 			);
 			path = ZeCampUITests;
 			sourceTree = "<group>";
@@ -519,7 +599,6 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 8947A41D1F2B3FF600A3E463;
@@ -696,7 +775,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24E34C741F30EB7100076BD5 /* MyResources in Resources */,
+				891B19111F601F62005B51E2 /* Content in Resources */,
+				8910881C1F4F14E6004148A4 /* AAZuehlke.ttf in Resources */,
+				8910881D1F4F14E6004148A4 /* AAZuehlkeMedium.ttf in Resources */,
+				8910881B1F4F14E6004148A4 /* AAZuehlke-italic.ttf in Resources */,
 				8947A4341F2B3FF600A3E463 /* LaunchScreen.storyboard in Resources */,
 				8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */,
 			);
