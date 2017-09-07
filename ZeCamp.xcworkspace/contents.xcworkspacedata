@@ -7,4 +7,11 @@
    <FileRef
       location = "group:ZeCamp/../scripts">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:ZeCamp/Carthage/Checkouts/RxSwift/Rx.xcodeproj">
+      </FileRef>
+   </Group>
 </Workspace>
