@@ -30,6 +30,11 @@ struct ScheduleScreen {
         scheduleTable.rowHeight = UITableViewAutomaticDimension
         scheduleTable.estimatedRowHeight = 50
         
+        let label = UILabel()
+        label.text = "ZeCamp commit \(Bundle.main.shortCommitId!). © 2017 Zuhlke Engineering Ltd. ✨"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        scheduleTable.tableFooterView = label
+        
         let delegate = ScheduleDelegate()
         delegate.viewController = viewController
         scheduleTable.strongDelegate = delegate
