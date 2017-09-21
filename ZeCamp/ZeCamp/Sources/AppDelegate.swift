@@ -9,7 +9,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
-        window.rootViewController = UIViewController()
         
         let scheduleUrl = Bundle.main.bundleURL.appendingPathComponent("Content").appendingPathComponent("schedule.json")
         
