@@ -13,42 +13,6 @@ extension UIView {
     }
 }
 
-extension UILabel {
-    private struct AssociatedKeys {
-        static var padding = UIEdgeInsets()
-    }
-    
-    var padding: UIEdgeInsets? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.padding) as? UIEdgeInsets
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.padding, newValue as UIEdgeInsets!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
-    override open func draw(_ rect: CGRect) {
-        if let insets = padding {
-            self.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
-        } else {
-            self.drawText(in: rect)
-        }
-    }
-    
-    override open var intrinsicContentSize: CGSize {
-        get {
-            var contentSize = super.intrinsicContentSize
-            if let insets = padding {
-                contentSize.height += insets.top + insets.bottom
-                contentSize.width += insets.left + insets.right
-            }
-            return contentSize
-        }
-    }
-}
-
 struct ScheduleScreen {
     
     private let dataSource: UITableViewDataSource!
@@ -72,15 +36,24 @@ struct ScheduleScreen {
         label.numberOfLines = 0
         label.textColor = UIColor.gray
         label.font = UIFont.systemFont(ofSize: 15)
-        label.padding = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         footer.addSubview(label)
-        scheduleTable.tableFooterView = footer
         
-        [NSLayoutConstraint(item: label, attribute: .width, relatedBy: .lessThanOrEqual, toItem: footer, attribute: .width, multiplier: 1.0, constant: 0),
-         NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: footer, attribute: .centerX, multiplier: 1.0, constant: 0)].activateAll()
+        scheduleTable.tableFooterView = footer
+        footer.layoutMargins = UIEdgeInsets(top: 15, left: 8, bottom: 8, right: 8)
+        
+        [
+            label.topAnchor.constraint(equalTo: footer.layoutMarginsGuide.topAnchor),
+            label.bottomAnchor.constraint(equalTo: footer.layoutMarginsGuide.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: footer.layoutMarginsGuide.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: footer.layoutMarginsGuide.trailingAnchor),
+            ].activateAll()
+        
+        footer.layoutIfNeeded()
+        footer.frame.size = footer.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
+        
         
         
         let delegate = ScheduleDelegate()
