@@ -34,13 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             foregroundColor = UIColor(named: "teal") ?? foregroundColor
             navigation.navigationBar.prefersLargeTitles = true
             navigation.navigationBar.largeTitleTextAttributes = [
-                .foregroundColor: foregroundColor,
                 .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
             ]
         }
         
         navigation.navigationBar.titleTextAttributes = [
-            .foregroundColor: foregroundColor,
             .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
         ]
         window.rootViewController = navigation
