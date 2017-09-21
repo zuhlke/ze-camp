@@ -40,10 +40,9 @@ struct ScheduleScreen {
         footer.addSubview(label)
         scheduleTable.tableFooterView = footer
         
-        footer.addConstraints([
-            NSLayoutConstraint(item: label, attribute: .width, relatedBy: .lessThanOrEqual, toItem: footer, attribute: .width, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: footer, attribute: .centerX, multiplier: 1.0, constant: 0)
-            ])
+        [NSLayoutConstraint(item: label, attribute: .width, relatedBy: .lessThanOrEqual, toItem: footer, attribute: .width, multiplier: 1.0, constant: 0),
+         NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: footer, attribute: .centerX, multiplier: 1.0, constant: 0)].activateAll()
+        
         
         let delegate = ScheduleDelegate()
         delegate.viewController = viewController
