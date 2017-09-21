@@ -71,7 +71,7 @@ struct ScheduleScreen {
         label.text = "ZeCamp commit \(Bundle.main.shortCommitId!).\n© 2017 Zuhlke Engineering Ltd. ✨"
         label.numberOfLines = 0
         label.textColor = UIColor.gray
-        label.font = UIFont(name: "Helvetica", size: 15)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.padding = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
