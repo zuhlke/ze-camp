@@ -32,12 +32,18 @@ struct ScheduleScreen {
         
         let footer = UIView()
         let label = UILabel()
-        label.text = "ZeCamp commit \(Bundle.main.shortCommitId!). © 2017 Zuhlke Engineering Ltd. ✨"
+        label.text = "ZeCamp commit \(Bundle.main.shortCommitId!).\n© 2017 Zuhlke Engineering Ltd. ✨"
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
         footer.addSubview(label)
         scheduleTable.tableFooterView = footer
+        
+        footer.addConstraints([
+            NSLayoutConstraint(item: label, attribute: .width, relatedBy: .lessThanOrEqual, toItem: footer, attribute: .width, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: footer, attribute: .centerX, multiplier: 1.0, constant: 0)
+            ])
         
         let delegate = ScheduleDelegate()
         delegate.viewController = viewController
