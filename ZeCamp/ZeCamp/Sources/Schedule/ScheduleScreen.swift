@@ -13,6 +13,42 @@ extension UIView {
     }
 }
 
+extension UILabel {
+    private struct AssociatedKeys {
+        static var padding = UIEdgeInsets()
+    }
+    
+    var padding: UIEdgeInsets? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.padding) as? UIEdgeInsets
+        }
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(self, &AssociatedKeys.padding, newValue as UIEdgeInsets!, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+    
+    override open func draw(_ rect: CGRect) {
+        if let insets = padding {
+            self.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        } else {
+            self.drawText(in: rect)
+        }
+    }
+    
+    override open var intrinsicContentSize: CGSize {
+        get {
+            var contentSize = super.intrinsicContentSize
+            if let insets = padding {
+                contentSize.height += insets.top + insets.bottom
+                contentSize.width += insets.left + insets.right
+            }
+            return contentSize
+        }
+    }
+}
+
 struct ScheduleScreen {
     
     private let dataSource: UITableViewDataSource!
@@ -34,6 +70,9 @@ struct ScheduleScreen {
         let label = UILabel()
         label.text = "ZeCamp commit \(Bundle.main.shortCommitId!).\n© 2017 Zuhlke Engineering Ltd. ✨"
         label.numberOfLines = 0
+        label.textColor = UIColor.gray
+        label.font = UIFont(name: "Helvetica", size: 15)
+        label.padding = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
