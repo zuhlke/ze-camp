@@ -32,6 +32,31 @@ struct ScheduleScreen {
         scheduleTable.rowHeight = UITableViewAutomaticDimension
         scheduleTable.estimatedRowHeight = 50
         
+        let footer = UIView()
+        let label = UILabel()
+        label.text = "ZeCamp commit \(Bundle.main.shortCommitId!).\n© 2017 Zuhlke Engineering Ltd. ✨"
+        label.numberOfLines = 0
+        label.textColor = UIColor.gray
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        footer.addSubview(label)
+        
+        scheduleTable.tableFooterView = footer
+        footer.layoutMargins = UIEdgeInsets(top: 15, left: 8, bottom: 8, right: 8)
+        
+        [
+            label.topAnchor.constraint(equalTo: footer.layoutMarginsGuide.topAnchor),
+            label.bottomAnchor.constraint(equalTo: footer.layoutMarginsGuide.bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: footer.layoutMarginsGuide.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: footer.layoutMarginsGuide.trailingAnchor),
+            ].activateAll()
+        
+        footer.layoutIfNeeded()
+        footer.frame.size = footer.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
+        
+        
         
         let delegate = ScheduleDelegate(timeSlots)
         delegate.viewController = viewController
