@@ -5,6 +5,7 @@ struct Event: Codable {
     let durationInMinutes: Int
     let name: String
     let location: String
+    let id: Int
 }
 
 struct Schedule: Codable {

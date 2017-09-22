@@ -12,16 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         window.rootViewController = UIViewController()
         
-        let scheduleUrl = Bundle.main.bundleURL.appendingPathComponent("Content").appendingPathComponent("schedule.json")
-        
-        guard let scheduleData = try? Data(contentsOf: scheduleUrl) else {
-            return true
-        }
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        
-        let schedule = try! decoder.decode(Schedule.self, from: scheduleData)
+        let schedule = JsonReader.getJson(FileName: "schedule.json", type: Schedule.self)
         
         let scheduleScreen = ScheduleScreen(schedule: schedule)
         
