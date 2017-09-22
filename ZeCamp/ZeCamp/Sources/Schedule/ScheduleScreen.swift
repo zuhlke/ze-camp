@@ -13,20 +13,27 @@ extension UIView {
     }
 }
 
-struct ScheduleScreen {
+struct ScheduleScreen : ScreenProtocol{
     
-    private let dataSource: UITableViewDataSource!
-    var timeSlots: [TimeSlot]
+    var schedule: Schedule
     
     init(schedule: Schedule) {
-        dataSource = ScheduleDataSource(schedule)
-        timeSlots = ScheduleDataSource(schedule).getTimeSlots()
+        self.schedule = schedule
     }
     
     func makeViewController() -> UIViewController {
         let viewController = UIViewController()
         viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
+        
+        let dataSource = ScheduleDataSource(schedule, { id in
+            let eventScreen = EventScreen(id).makeViewController();
+            eventScreen.view.backgroundColor = .white
+            if #available(iOS 11.0, *) {
+                eventScreen.navigationItem.largeTitleDisplayMode = .never
+            }
+            viewController.navigationController?.pushViewController(eventScreen, animated: true)
+        })
         
         scheduleTable.strongDataSource = dataSource
         scheduleTable.rowHeight = UITableViewAutomaticDimension
@@ -56,13 +63,8 @@ struct ScheduleScreen {
         footer.layoutIfNeeded()
         footer.frame.size = footer.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
         
-        
-        
-        let delegate = ScheduleDelegate(timeSlots)
-        delegate.viewController = viewController
-        scheduleTable.strongDelegate = delegate
+        scheduleTable.strongDelegate = dataSource
         viewController.view.addFillingSubview(scheduleTable)
-
         
         return viewController
     }
@@ -86,34 +88,7 @@ struct TimeSlot {
     let events: [Event]
 }
 
-class ScheduleDelegate: NSObject, UITableViewDelegate {
-    weak var viewController: UIViewController?
-    var timeSlots: [TimeSlot]
-    
-    init(_ timeSlots: [TimeSlot]){
-        self.timeSlots = timeSlots
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        defer {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        
-        
-        let id = timeSlots[indexPath.section].events[indexPath.row].id
-        print(id)
-        let eventScreen = EventScreen(id).getController();
-        
-        eventScreen.view.backgroundColor = .white
-        if #available(iOS 11.0, *) {
-            eventScreen.navigationItem.largeTitleDisplayMode = .never
-        }
-        viewController?.navigationController?.pushViewController(eventScreen, animated: true)
-    }
-    
-}
-
-class EventScreen {
+class EventScreen : ScreenProtocol{
     
     var eventId = 0
     
@@ -128,7 +103,8 @@ class EventScreen {
         label.numberOfLines = 0
     }
     
-    func setDefaultStackView(_ stackView: UIStackView) {
+    func getDefaultStackView(_ labels: [UILabel]) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: labels)
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
@@ -136,6 +112,7 @@ class EventScreen {
         stackView.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }
     
     func constrainStackView(StackView stackView: UIStackView, ViewController eventScreen: UIViewController) {
@@ -152,7 +129,7 @@ class EventScreen {
         }
     }
     
-    func getController( ) -> UIViewController {
+    func makeViewController( ) -> UIViewController {
         
         let eventScreen = UIViewController()
         eventScreen.title = "Event"
@@ -165,12 +142,11 @@ class EventScreen {
             label.numberOfLines = 0
         }
         
-        let stackView = UIStackView(arrangedSubviews: labels)
-        setDefaultStackView(stackView)
+        let stackView = getDefaultStackView(labels)
         constrainStackView(StackView: stackView, ViewController: eventScreen)
         
         headerLabel.font = UIFont(name: "AAZuehlkeMedium", size: 18)
-              
+        
         guard let event = JsonReader.getJson(FileName: "eventDetails.json", type: DetailsList.self).details.first(where: { $0.id == eventId }) else {
             return UIViewController()
         }
@@ -182,16 +158,23 @@ class EventScreen {
     }
 }
 
-class ScheduleDataSource: NSObject, UITableViewDataSource {
+class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     let timeSlots: [TimeSlot]
+    var navigate: (Int) -> Void
     
-    func getTimeSlots() -> [TimeSlot]{
-        return timeSlots
+    
+    init(_ schedule: Schedule, _ navigate: @escaping (Int) -> Void) {
+        self.timeSlots = schedule.asOrderedTimeSlots()
+        self.navigate = navigate
     }
     
-    init(_ schedule: Schedule) {
-        self.timeSlots = schedule.asOrderedTimeSlots()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        let id = timeSlots[indexPath.section].events[indexPath.row].id
+        navigate(id)
     }
     
     @available(iOS 2.0, *)
@@ -216,7 +199,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
         
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = "\(event.startTime) - \(event.endTime) - \(event.location)"
-
+        
         return cell
     }
 }
