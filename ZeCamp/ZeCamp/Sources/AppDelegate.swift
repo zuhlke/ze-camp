@@ -6,11 +6,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
-        window.rootViewController = UIViewController()
         
         let schedule = JsonReader.getJson(FileName: "schedule.json", type: Schedule.self)
         
@@ -27,13 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             foregroundColor = UIColor(named: "teal") ?? foregroundColor
             navigation.navigationBar.prefersLargeTitles = true
             navigation.navigationBar.largeTitleTextAttributes = [
-                .foregroundColor: foregroundColor,
                 .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
             ]
         }
         
         navigation.navigationBar.titleTextAttributes = [
-            .foregroundColor: foregroundColor,
             .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
         ]
         window.rootViewController = navigation

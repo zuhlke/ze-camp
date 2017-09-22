@@ -37,6 +37,7 @@ struct ScheduleScreen {
         delegate.viewController = viewController
         scheduleTable.strongDelegate = delegate
         viewController.view.addFillingSubview(scheduleTable)
+
         
         return viewController
     }
@@ -186,21 +187,11 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = self.timeSlots[indexPath.section].events[indexPath.row]
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
-        let stack = UIStackView()
-        stack.axis = .vertical
-        
-        let eventName = UILabel()
-        eventName.text = event.name
-        stack.addArrangedSubview(eventName)
-        
-        let eventDetails = UILabel()
-        eventDetails.text = "\(event.startTime) - \(event.endTime) - \(event.location)"
-        stack.addArrangedSubview(eventDetails)
-        
-        cell.addFillingSubview(stack)
-        
+        cell.textLabel?.text = event.name
+        cell.detailTextLabel?.text = "\(event.startTime) - \(event.endTime) - \(event.location)"
+
         return cell
     }
 }
