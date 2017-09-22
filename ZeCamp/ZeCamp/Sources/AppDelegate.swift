@@ -27,21 +27,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .font: UIFont(name: "AAZuehlke", size: 18)!
             ], for: .normal)
         
-        let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
+        let scheduleNavigation = scheduleScreen
+            .makeViewController()
+            .wrappedInUINavigationController()
+        
+        let scheduleImage = UIImage(named: "schedule", in: Bundle.main, compatibleWith: nil)
+        scheduleNavigation.tabBarItem = UITabBarItem(title: "Schedule", image: scheduleImage, selectedImage: scheduleImage)
+        
+        let infoController = InfoScreen().makeViewController()
+        let info = UIImage(named: "info", in: Bundle.main, compatibleWith: nil)
+
+        infoController.tabBarItem = UITabBarItem(title: "Info", image: info, selectedImage: info)
+        
         
         var foregroundColor = UIColor.blue
         if #available(iOS 11.0, *) {
             foregroundColor = UIColor(named: "teal") ?? foregroundColor
-            navigation.navigationBar.prefersLargeTitles = true
-            navigation.navigationBar.largeTitleTextAttributes = [
-                .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
-            ]
         }
         
-        navigation.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
-        ]
-        window.rootViewController = navigation
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [scheduleNavigation, infoController]
+        window.rootViewController = tabBar
         window.tintColor = foregroundColor
         
         
