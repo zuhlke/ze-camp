@@ -91,9 +91,7 @@ class ScheduleDelegate: NSObject, UITableViewDelegate {
         let emptyScreen = UIViewController()
         emptyScreen.title = "Event"
         emptyScreen.view.backgroundColor = .white
-        if #available(iOS 11.0, *) {
-            emptyScreen.navigationItem.largeTitleDisplayMode = .never
-        }
+        emptyScreen.navigationItem.largeTitleDisplayMode = .never
         viewController?.navigationController?.pushViewController(emptyScreen, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

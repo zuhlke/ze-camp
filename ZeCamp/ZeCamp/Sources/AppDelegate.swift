@@ -29,14 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
         
-        var foregroundColor = UIColor.blue
-        if #available(iOS 11.0, *) {
-            foregroundColor = UIColor(named: "teal") ?? foregroundColor
-            navigation.navigationBar.prefersLargeTitles = true
-            navigation.navigationBar.largeTitleTextAttributes = [
-                .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
-            ]
-        }
+        let foregroundColor = UIColor(named: "teal")
+        navigation.navigationBar.prefersLargeTitles = true
+        navigation.navigationBar.largeTitleTextAttributes = [
+            .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
+        ]
         
         navigation.navigationBar.titleTextAttributes = [
             .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
