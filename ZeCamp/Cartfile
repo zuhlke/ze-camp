@@ -1,2 +1,2 @@
 git "git@bitbucket.org:zuhlke-mobile/ze-camp-assets.git" ~> 0.2
-github "ReactiveX/RxSwift" ~> 3.0
+github "ReactiveX/RxSwift" ~> 4.0
