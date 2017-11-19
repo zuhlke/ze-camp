@@ -1,46 +1,48 @@
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
+    private let bag = DisposeBag()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
         
-        let scheduleUrl = Bundle.main.bundleURL.appendingPathComponent("Content").appendingPathComponent("schedule.json")
+        window.tintColor = UIColor(named: "teal")
         
-        guard let scheduleData = try? Data(contentsOf: scheduleUrl) else {
-            return true
-        }
+        let model = AppModel(forContentsNamed: "Content")
         
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        let vc = UIViewController()
+        let indicator = UIActivityIndicatorView()
+        indicator.startAnimating()
+        vc.view = indicator
+        window.rootViewController = vc
         
-        let schedule = try! decoder.decode(Schedule.self, from: scheduleData)
-        
-        let scheduleScreen = ScheduleScreen(schedule: schedule)
-        
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            .font: UIFont(name: "AAZuehlke", size: 18)!
-            ], for: .normal)
-        
-        let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
-        
-        let foregroundColor = UIColor(named: "teal")
-        navigation.navigationBar.prefersLargeTitles = true
-        navigation.navigationBar.largeTitleTextAttributes = [
-            .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
-        ]
-        
-        navigation.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
-        ]
-        window.rootViewController = navigation
-        window.tintColor = foregroundColor
-        
+        model.schedule.observeOn(MainScheduler.instance).subscribe(onNext: { schedule in
+            let scheduleScreen = ScheduleScreen(schedule: schedule)
+            
+            UIBarButtonItem.appearance().setTitleTextAttributes([
+                .font: UIFont(name: "AAZuehlke", size: 18)!
+                ], for: .normal)
+            
+            let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
+            
+            navigation.navigationBar.prefersLargeTitles = true
+            navigation.navigationBar.largeTitleTextAttributes = [
+                .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
+            ]
+            
+            navigation.navigationBar.titleTextAttributes = [
+                .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
+            ]
+            
+            window.rootViewController = navigation
+        }).disposed(by: bag)
         
         return true
     }
