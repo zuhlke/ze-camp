@@ -9,32 +9,19 @@ struct AppModel {
     
     var schedule: Observable<Schedule>
     
-    init(forContentsNamed content: String, in bundle : Bundle = .main) {
-        schedule = Observable.create { observer in
-            DispatchQueue.global(qos: .userInteractive).async {
-                
-                do {
-                    
-                    guard let scheduleUrl = bundle.url(forResource: "schedule", withExtension: "json", subdirectory: content) else {
-                        throw Errors.missingScheduleFile
-                    }
-                    
-                    let scheduleData = try Data(contentsOf: scheduleUrl)
-                    
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
-                    
-                    let schedule = try decoder.decode(Schedule.self, from: scheduleData)
-                    observer.onNext(schedule)
-                    observer.onCompleted()
-                } catch {
-                    observer.onError(error)
-                }
-                
-            }
+    init(resourceProvider: ResourceProvider) {
+        schedule = resourceProvider.load(contentsOf: .schedule).map { data in
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             
-            return Disposables.create()
+            return try decoder.decode(Schedule.self, from: data)
         }
     }
+    
+}
+
+private extension ResourceIdentifier {
+    
+    static let schedule = ResourceIdentifier(name: "schedule", extension: "json")
     
 }

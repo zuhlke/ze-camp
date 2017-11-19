@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window.tintColor = UIColor(named: "teal")
         
-        let model = AppModel(forContentsNamed: "Content")
+        let resourceProvider = ResourceProvider(folder: "Content")
+        let model = AppModel(resourceProvider: resourceProvider)
         
         let vc = UIViewController()
         let indicator = UIActivityIndicatorView()
