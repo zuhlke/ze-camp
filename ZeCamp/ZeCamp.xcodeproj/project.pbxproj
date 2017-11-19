@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
 		246199BD1F30DC1800991818 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BC1F30DC1800991818 /* Schedule.swift */; };
-		24A559051F34E245009B9884 /* Sequence+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A559041F34E245009B9884 /* Sequence+groupBy.swift */; };
+		24A559051F34E245009B9884 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A559041F34E245009B9884 /* Sequence.swift */; };
 		8910881B1F4F14E6004148A4 /* AAZuehlke-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */; };
 		8910881C1F4F14E6004148A4 /* AAZuehlke.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088191F4F14AA004148A4 /* AAZuehlke.ttf */; };
 		8910881D1F4F14E6004148A4 /* AAZuehlkeMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */; };
@@ -24,7 +24,7 @@
 		8947A43F1F2B3FF600A3E463 /* ZeCampTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */; };
 		8947A44A1F2B3FF600A3E463 /* ZeCampUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4491F2B3FF600A3E463 /* ZeCampUITests.swift */; };
 		89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FCE41D1FBDE43C00C729A0 /* AppModel.swift */; };
-		8B29E6A31F50CC7900F259AE /* Bundle+gitVersionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */; };
+		8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29E6A21F50CC7900F259AE /* Bundle.swift */; };
 		8BD4890C1F73C842000ECBD7 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 /* Begin PBXFileReference section */
 		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
-		24A559041F34E245009B9884 /* Sequence+groupBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+groupBy.swift"; sourceTree = "<group>"; };
+		24A559041F34E245009B9884 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AAZuehlke-italic.ttf"; sourceTree = "<group>"; };
 		891088191F4F14AA004148A4 /* AAZuehlke.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlke.ttf; sourceTree = "<group>"; };
 		8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlkeMedium.ttf; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		89C7474A1F6147FB00AB24BC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C7474B1F6147FB00AB24BC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FCE41D1FBDE43C00C729A0 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+gitVersionString.swift"; sourceTree = "<group>"; };
+		8B29E6A21F50CC7900F259AE /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,9 +137,9 @@
 		24A559031F34E1DF009B9884 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				24A559041F34E245009B9884 /* Sequence+groupBy.swift */,
-				8B29E6A21F50CC7900F259AE /* Bundle+gitVersionString.swift */,
+				8B29E6A21F50CC7900F259AE /* Bundle.swift */,
 				8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */,
+				24A559041F34E245009B9884 /* Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -491,12 +491,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
-				8B29E6A31F50CC7900F259AE /* Bundle+gitVersionString.swift in Sources */,
+				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
 				8BD4890C1F73C842000ECBD7 /* NSLayoutConstraint.swift in Sources */,
 				246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */,
 				246199BD1F30DC1800991818 /* Schedule.swift in Sources */,
 				8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */,
-				24A559051F34E245009B9884 /* Sequence+groupBy.swift in Sources */,
+				24A559051F34E245009B9884 /* Sequence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
