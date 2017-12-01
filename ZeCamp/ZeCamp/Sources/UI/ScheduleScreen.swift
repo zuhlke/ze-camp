@@ -3,13 +3,11 @@ import UIKit
 
 struct ScheduleScreen: Screen {
     
-    private let dataSource: UITableViewDataSource!
-    
-    init(schedule: Schedule) {
-        dataSource = ScheduleDataSource(schedule)
-    }
+    var schedule: Schedule
     
     func makeViewController() -> UIViewController {
+        let dataSource = ScheduleDataSource(schedule)
+        
         let viewController = UIViewController()
         viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
@@ -41,8 +39,6 @@ struct ScheduleScreen: Screen {
         
         footer.layoutIfNeeded()
         footer.frame.size = footer.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
-        
-        
         
         let delegate = ScheduleDelegate()
         delegate.viewController = viewController
