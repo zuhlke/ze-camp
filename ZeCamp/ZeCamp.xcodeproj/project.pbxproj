@@ -22,6 +22,7 @@
 		89200C721FD1B2210050AFDC /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C711FD1B2210050AFDC /* Screen.swift */; };
 		89200C741FD1B2BB0050AFDC /* AppLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */; };
 		89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C751FD1B3120050AFDC /* MainAppScreen.swift */; };
+		89200C791FD1B7430050AFDC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C781FD1B7430050AFDC /* UIView.swift */; };
 		893135401FC198F3009B54DE /* ResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931353F1FC198F3009B54DE /* ResourceProvider.swift */; };
 		8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4291F2B3FF600A3E463 /* AppDelegate.swift */; };
 		8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4301F2B3FF600A3E463 /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		89200C711FD1B2210050AFDC /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingScreen.swift; sourceTree = "<group>"; };
 		89200C751FD1B3120050AFDC /* MainAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppScreen.swift; sourceTree = "<group>"; };
+		89200C781FD1B7430050AFDC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8931353F1FC198F3009B54DE /* ResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProvider.swift; sourceTree = "<group>"; };
 		8947A4261F2B3FF600A3E463 /* ZeCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4291F2B3FF600A3E463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				8B29E6A21F50CC7900F259AE /* Bundle.swift */,
-				8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */,
 				24A559041F34E245009B9884 /* Sequence.swift */,
 			);
 			path = Extensions;
@@ -191,6 +192,7 @@
 		89200C6F1FD1B1E70050AFDC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				89200C771FD1B72B0050AFDC /* Extensions */,
 				89200C701FD1B1F30050AFDC /* Abstractions */,
 				246199BA1F30DA1900991818 /* ScheduleScreen.swift */,
 				89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */,
@@ -205,6 +207,15 @@
 				89200C711FD1B2210050AFDC /* Screen.swift */,
 			);
 			path = Abstractions;
+			sourceTree = "<group>";
+		};
+		89200C771FD1B72B0050AFDC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */,
+				89200C781FD1B7430050AFDC /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8926091F1F60310900DB78E1 /* Sources */ = {
@@ -556,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89200C791FD1B7430050AFDC /* UIView.swift in Sources */,
 				89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */,
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
 				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
