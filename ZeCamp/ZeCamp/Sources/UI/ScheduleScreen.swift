@@ -13,7 +13,7 @@ extension UIView {
     }
 }
 
-struct ScheduleScreen {
+struct ScheduleScreen: Screen {
     
     private let dataSource: UITableViewDataSource!
     
