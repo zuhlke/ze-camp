@@ -18,19 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let resourceProvider = ResourceProvider(folder: "Content")
         let model = AppModel(resourceProvider: resourceProvider)
         
-        let rootViewController = model.schedule.observeOn(MainScheduler.instance).map { scheduleLoadable -> UIViewController in
+        let rootScreen = model.schedule.map { scheduleLoadable -> Screen in
             switch scheduleLoadable {
             case .loading:
-                return AppLoadingScreen().makeViewController()
+                return AppLoadingScreen()
                 
             case .loaded(let schedule):
-                return MainAppScreen(schedule: schedule).makeViewController()
+                return MainAppScreen(schedule: schedule)
             }
         }
         
-        rootViewController.subscribe(onNext: { viewController in
-            window.rootViewController = viewController
-        }).disposed(by: bag)
+        rootScreen
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { screen in
+                window.rootViewController = screen.makeViewController()
+            })
+            .disposed(by: bag)
         
         return true
     }

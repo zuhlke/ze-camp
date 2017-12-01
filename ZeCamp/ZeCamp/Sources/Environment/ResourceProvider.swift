@@ -24,15 +24,18 @@ struct ResourceProvider {
     
     func load(contentsOf identifier: ResourceIdentifier) -> Observable<Data> {
         return Observable.create { observer in
-            do {
-                guard let scheduleUrl = self.bundle.url(forResource: identifier.name, withExtension: identifier.extension, subdirectory: self.folder) else {
-                    throw Errors.missingResource(identifier: identifier)
+            
+            ResourceProvider.queue.async {
+                do {
+                    guard let scheduleUrl = self.bundle.url(forResource: identifier.name, withExtension: identifier.extension, subdirectory: self.folder) else {
+                        throw Errors.missingResource(identifier: identifier)
+                    }
+                    
+                    observer.onNext(try Data(contentsOf: scheduleUrl))
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(error)
                 }
-                
-                observer.onNext(try Data(contentsOf: scheduleUrl))
-                observer.onCompleted()
-            } catch {
-                observer.onError(error)
             }
             
             return Disposables.create()
