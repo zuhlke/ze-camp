@@ -18,6 +18,7 @@
 		8920028A1F61485200D5D001 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474A1F6147FB00AB24BC /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8920028B1F61485200D5D001 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474B1F6147FB00AB24BC /* RxSwift.framework */; };
 		8920028C1F61485200D5D001 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474B1F6147FB00AB24BC /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		89200C6E1FD1A9E40050AFDC /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C6D1FD1A9E40050AFDC /* Loadable.swift */; };
 		893135401FC198F3009B54DE /* ResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931353F1FC198F3009B54DE /* ResourceProvider.swift */; };
 		8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4291F2B3FF600A3E463 /* AppDelegate.swift */; };
 		8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4301F2B3FF600A3E463 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		891088191F4F14AA004148A4 /* AAZuehlke.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlke.ttf; sourceTree = "<group>"; };
 		8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlkeMedium.ttf; sourceTree = "<group>"; };
 		891B19101F601E93005B51E2 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
+		89200C6D1FD1A9E40050AFDC /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		8931353F1FC198F3009B54DE /* ResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProvider.swift; sourceTree = "<group>"; };
 		8947A4261F2B3FF600A3E463 /* ZeCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4291F2B3FF600A3E463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,10 +183,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		89200C6C1FD1A9CA0050AFDC /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				89200C6D1FD1A9E40050AFDC /* Loadable.swift */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 		8926091F1F60310900DB78E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				24A559031F34E1DF009B9884 /* Extensions */,
+				89200C6C1FD1A9CA0050AFDC /* Containers */,
 				8931353E1FC1989C009B54DE /* Environment */,
 				89FCE41C1FBDE42A00C729A0 /* Model */,
 				246199B91F30D9E200991818 /* Schedule */,
@@ -530,6 +541,7 @@
 			files = (
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
 				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
+				89200C6E1FD1A9E40050AFDC /* Loadable.swift in Sources */,
 				8BD4890C1F73C842000ECBD7 /* NSLayoutConstraint.swift in Sources */,
 				246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */,
 				246199BD1F30DC1800991818 /* Schedule.swift in Sources */,
