@@ -24,24 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return AppLoadingScreen().makeViewController()
                 
             case .loaded(let schedule):
-                let scheduleScreen = ScheduleScreen(schedule: schedule)
-                
-                UIBarButtonItem.appearance().setTitleTextAttributes([
-                    .font: UIFont(name: "AAZuehlke", size: 18)!
-                    ], for: .normal)
-                
-                let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
-                
-                navigation.navigationBar.prefersLargeTitles = true
-                navigation.navigationBar.largeTitleTextAttributes = [
-                    .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
-                ]
-                
-                navigation.navigationBar.titleTextAttributes = [
-                    .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
-                ]
-                
-                return navigation
+                return MainAppScreen(schedule: schedule).makeViewController()
             }
         }
         

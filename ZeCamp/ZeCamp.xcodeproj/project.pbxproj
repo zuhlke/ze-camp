@@ -21,6 +21,7 @@
 		89200C6E1FD1A9E40050AFDC /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C6D1FD1A9E40050AFDC /* Loadable.swift */; };
 		89200C721FD1B2210050AFDC /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C711FD1B2210050AFDC /* Screen.swift */; };
 		89200C741FD1B2BB0050AFDC /* AppLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */; };
+		89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89200C751FD1B3120050AFDC /* MainAppScreen.swift */; };
 		893135401FC198F3009B54DE /* ResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931353F1FC198F3009B54DE /* ResourceProvider.swift */; };
 		8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8947A4291F2B3FF600A3E463 /* AppDelegate.swift */; };
 		8947A4311F2B3FF600A3E463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8947A4301F2B3FF600A3E463 /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		89200C6D1FD1A9E40050AFDC /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		89200C711FD1B2210050AFDC /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingScreen.swift; sourceTree = "<group>"; };
+		89200C751FD1B3120050AFDC /* MainAppScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppScreen.swift; sourceTree = "<group>"; };
 		8931353F1FC198F3009B54DE /* ResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProvider.swift; sourceTree = "<group>"; };
 		8947A4261F2B3FF600A3E463 /* ZeCamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeCamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8947A4291F2B3FF600A3E463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				89200C701FD1B1F30050AFDC /* Abstractions */,
 				246199BA1F30DA1900991818 /* ScheduleScreen.swift */,
 				89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */,
+				89200C751FD1B3120050AFDC /* MainAppScreen.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */,
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
 				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
 				89200C6E1FD1A9E40050AFDC /* Loadable.swift in Sources */,
