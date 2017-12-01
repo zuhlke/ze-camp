@@ -18,19 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let resourceProvider = ResourceProvider(folder: "Content")
         let model = AppModel(resourceProvider: resourceProvider)
         
-        let vc = UIViewController()
-        let indicator = UIActivityIndicatorView()
-        indicator.startAnimating()
-        vc.view = indicator
-        
         let rootViewController = model.schedule.observeOn(MainScheduler.instance).map { scheduleLoadable -> UIViewController in
             switch scheduleLoadable {
             case .loading:
-                let vc = UIViewController()
-                let indicator = UIActivityIndicatorView()
-                indicator.startAnimating()
-                vc.view = indicator
-                return vc
+                return AppLoadingScreen().makeViewController()
                 
             case .loaded(let schedule):
                 let scheduleScreen = ScheduleScreen(schedule: schedule)
