@@ -23,6 +23,22 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
         XCTAssertEqual(callbackCount, 5)
     }
     
+    func testThatAVerifierIsCalledForEachEventForPrefix() {
+        let elements = [1, 2, 3, 4]
+        let observable = Observable.from(elements)
+        
+        var callbackCount = 0
+        let verifiers = elements.map { expected in
+            return SnapshotVerifier<Int>.next { value in
+                callbackCount += 1
+                XCTAssertEqual(expected, value)
+            }
+        }
+        
+        XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers, options: [.matchPrefix]))
+        XCTAssertEqual(callbackCount, 4)
+    }
+    
     func testThatVerificationFailsIfNotEnoughVerifiers() {
         let elements = [1, 2, 3, 4]
         let observable = Observable.from(elements)
