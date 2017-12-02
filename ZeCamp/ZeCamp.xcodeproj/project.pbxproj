@@ -33,6 +33,7 @@
 		89AFAC5A1FD1C12600656988 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFAC591FD1C12600656988 /* Snapshot.swift */; };
 		89AFAC5C1FD1C16600656988 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFAC5B1FD1C16600656988 /* XCTestCase.swift */; };
 		89AFAC5E1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFAC5D1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift */; };
+		89AFAC601FD3572900656988 /* SnapshotVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFAC5F1FD3572900656988 /* SnapshotVerifier.swift */; };
 		89E39B401FC1D6AB0038958D /* ResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */; };
 		89E39B431FC1D7860038958D /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 89E39B421FC1D7860038958D /* Content */; };
 		89E39B4C1FC1D8760038958D /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E39B4B1FC1D8400038958D /* RxTest.framework */; };
@@ -117,6 +118,7 @@
 		89AFAC591FD1C12600656988 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
 		89AFAC5B1FD1C16600656988 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
 		89AFAC5D1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseObservableSnapshotsTests.swift; sourceTree = "<group>"; };
+		89AFAC5F1FD3572900656988 /* SnapshotVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotVerifier.swift; sourceTree = "<group>"; };
 		89C7474A1F6147FB00AB24BC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89C7474B1F6147FB00AB24BC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProviderTests.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				89AFAC591FD1C12600656988 /* Snapshot.swift */,
+				89AFAC5F1FD3572900656988 /* SnapshotVerifier.swift */,
 				89AFAC5B1FD1C16600656988 /* XCTestCase.swift */,
 				89AFAC5D1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift */,
 			);
@@ -620,6 +623,7 @@
 				89AFAC5A1FD1C12600656988 /* Snapshot.swift in Sources */,
 				89E39B401FC1D6AB0038958D /* ResourceProviderTests.swift in Sources */,
 				8947A43F1F2B3FF600A3E463 /* ZeCampTests.swift in Sources */,
+				89AFAC601FD3572900656988 /* SnapshotVerifier.swift in Sources */,
 				89AFAC5E1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

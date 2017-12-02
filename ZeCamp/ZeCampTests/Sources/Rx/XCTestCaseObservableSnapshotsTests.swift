@@ -9,8 +9,8 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
         let observable = Observable.from(elements)
         
         var callbackCount = 0
-        var verifiers = elements.map { expected -> SnapshotVerifier<Int> in
-            return { snapshot in
+        var verifiers = elements.map { expected in
+            return SnapshotVerifier<Int> { snapshot in
                 callbackCount += 1
                 switch snapshot.event {
                 case .next(let element):
@@ -21,7 +21,7 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
             }
         }
         
-        verifiers.append { snapshot in
+        verifiers.append(SnapshotVerifier<Int> { snapshot in
             callbackCount += 1
             switch snapshot.event {
             case .completed:
@@ -29,7 +29,7 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
             default:
                 XCTFail("Expected .completed")
             }
-        }
+        })
         
         XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers))
         XCTAssertEqual(callbackCount, 5)
@@ -46,7 +46,7 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
         let expected = 1
         let observable = Observable.just(expected)
         
-        let verifier: SnapshotVerifier<Int> = { _ in }
+        let verifier = SnapshotVerifier<Int> { _ in }
 
         XCTAssertThrowsError(try verify(snapshotsOf: observable, match: [verifier, verifier, verifier]))
     }

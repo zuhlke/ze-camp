@@ -1,8 +1,6 @@
 import XCTest
 import RxSwift
 
-typealias SnapshotVerifier<Element> = (Snapshot<Element>) throws -> Void
-
 enum SnapshotVerifierErrors: Error, CustomStringConvertible {
     case notEnoughVerifiers
     case tooManyVerifiers(remainder: Int)
@@ -41,7 +39,7 @@ extension XCTestCase {
         let disposable = observable.asObservable().subscribe { event in
             let snapshot = Snapshot(event: event)
             do {
-                try nextVerifier()(snapshot)
+                try nextVerifier().verify(snapshot)
             } catch {
                 pendingError = error
             }
