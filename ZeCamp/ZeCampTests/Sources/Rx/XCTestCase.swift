@@ -1,20 +1,6 @@
 import XCTest
 import RxSwift
 
-enum SnapshotVerifierErrors: Error, CustomStringConvertible {
-    case notEnoughVerifiers
-    case tooManyVerifiers(remainder: Int)
-
-    var description: String {
-        switch self {
-        case .notEnoughVerifiers:
-            return "Observable produced more events than there are verifiers."
-        case .tooManyVerifiers(let remainder):
-            return "Observable terminated early. Remaining verifiers count: \(remainder)."
-        }
-    }
-}
-
 extension XCTestCase {
     
     func XCTAssert<T>(snapshotsOf observable: T, match verifiers: [SnapshotVerifier<T.E>], file: StaticString = #file, line: UInt = #line) where T: ObservableConvertibleType {
