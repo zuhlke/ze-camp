@@ -4,7 +4,7 @@ import RxSwift
 extension XCTestCase {
     
     enum SnapshotVerificationOptions {
-        case matchPrefix
+        case doNotWaitForTermination
     }
     
     func XCTAssert<T>(snapshotsOf observable: T, match verifiers: [SnapshotVerifier<T.E>], options: Set<SnapshotVerificationOptions> = [], timeOut timeout: TimeoutProvider = .immediate, file: StaticString = #file, line: UInt = #line) where T: ObservableConvertibleType {
@@ -35,7 +35,7 @@ extension XCTestCase {
             guard remainingVerifiers.isEmpty else {
                 return true
             }
-            return !(terminated || options.contains(.matchPrefix))
+            return !(terminated || options.contains(.doNotWaitForTermination))
         }
         
         let disposable = observable
@@ -66,14 +66,14 @@ extension XCTestCase {
         if let pendingError = pendingError {
             // don’t throw error if we’re matching prefix and error is about count
             guard
-                options.contains(.matchPrefix),
+                options.contains(.doNotWaitForTermination),
                 let e = pendingError as? SnapshotVerifierErrors,
                 case .notEnoughVerifiers = e else {
                     throw pendingError
             }
         }
         
-        guard terminated || options.contains(.matchPrefix) else {
+        guard terminated || options.contains(.doNotWaitForTermination) else {
             throw SnapshotVerifierErrors.didNotTerminate
         }
         

@@ -37,7 +37,7 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
             }
         }
         
-        XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers, options: [.matchPrefix]))
+        XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers, options: [.doNotWaitForTermination]))
         XCTAssertEqual(callbackCount, 4)
     }
     
@@ -135,7 +135,7 @@ class XCTestCaseObservableSnapshotsTests: XCTestCase {
             }
         }
         
-        XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers, options: [.matchPrefix], timeOut: .byChecking(completed)))
+        XCTAssertNoThrow(try verify(snapshotsOf: observable, match: verifiers, options: [.doNotWaitForTermination], timeOut: .byChecking(completed)))
         XCTAssertEqual(callbackCount, 4)
     }
     
