@@ -38,8 +38,6 @@
 		89AFAC641FD3749200656988 /* TimeoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AFAC631FD3749200656988 /* TimeoutProvider.swift */; };
 		89E39B401FC1D6AB0038958D /* ResourceProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */; };
 		89E39B431FC1D7860038958D /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 89E39B421FC1D7860038958D /* Content */; };
-		89E39B4C1FC1D8760038958D /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E39B4B1FC1D8400038958D /* RxTest.framework */; };
-		89E39B4D1FC1D8760038958D /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E39B4A1FC1D8400038958D /* RxBlocking.framework */; };
 		89E39B4E1FC1DA050038958D /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474A1F6147FB00AB24BC /* RxCocoa.framework */; };
 		89E39B4F1FC1DA050038958D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474B1F6147FB00AB24BC /* RxSwift.framework */; };
 		89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FCE41D1FBDE43C00C729A0 /* AppModel.swift */; };
@@ -127,8 +125,6 @@
 		89C7474B1F6147FB00AB24BC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceProviderTests.swift; sourceTree = "<group>"; };
 		89E39B421FC1D7860038958D /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = "<group>"; };
-		89E39B4A1FC1D8400038958D /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		89E39B4B1FC1D8400038958D /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FCE41D1FBDE43C00C729A0 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		8B29E6A21F50CC7900F259AE /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 			files = (
 				89E39B4F1FC1DA050038958D /* RxSwift.framework in Frameworks */,
 				89E39B4E1FC1DA050038958D /* RxCocoa.framework in Frameworks */,
-				89E39B4C1FC1D8760038958D /* RxTest.framework in Frameworks */,
-				89E39B4D1FC1D8760038958D /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,8 +417,6 @@
 		89C747451F6147B700AB24BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				89E39B4B1FC1D8400038958D /* RxTest.framework */,
-				89E39B4A1FC1D8400038958D /* RxBlocking.framework */,
 				89C7474A1F6147FB00AB24BC /* RxCocoa.framework */,
 				89C7474B1F6147FB00AB24BC /* RxSwift.framework */,
 			);

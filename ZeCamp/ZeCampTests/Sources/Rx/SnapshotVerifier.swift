@@ -63,3 +63,15 @@ extension SnapshotVerifier {
     }
     
 }
+
+extension SnapshotVerifier where Element: Equatable {
+    
+    static func next(_ expected: Element) -> SnapshotVerifier<Element> {
+        return .next { value in
+            guard expected == value else {
+                throw SnapshotVerifierErrors.unexpectedValue(expected: expected, actual: value)
+            }
+        }
+    }
+        
+}

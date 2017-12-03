@@ -1,5 +1,4 @@
 import XCTest
-import RxBlocking
 @testable import ZeCamp
 
 class ResourceProviderTests: XCTestCase {
@@ -7,29 +6,24 @@ class ResourceProviderTests: XCTestCase {
     private let resourceProvider = ResourceProvider(folder: "Content", in: Bundle(for: ZeCampTests.self))
     
     func testLoadingResources() {
-        let result = resourceProvider.load(contentsOf: .sample).toBlocking().materialize()
-        
-        switch result {
-        case .completed(let elements):
-            XCTAssertEqual(elements, [
-                "Read this!".data(using: .utf8)!,
-                ])
-            
-        case .failed(_, let error):
-            XCTFail("Unexpected error: \(error)")
-        }
+        XCTAssert(
+            snapshotsOf: resourceProvider.load(contentsOf: .sample),
+            match: [
+                .next(try! Data(contentsOf: ResourceIdentifier.sample.testURL()) ),
+                .completed()
+            ],
+            timeOut: .never
+        )
     }
     
     func testMissingFileError() {
-        let result = resourceProvider.load(contentsOf: .missing).toBlocking().materialize()
-        
-        switch result {
-        case .completed(_):
-            XCTFail("Should have thrown")
-
-        case .failed(_, _):
-            break // expected
-        }
+        XCTAssert(
+            snapshotsOf: resourceProvider.load(contentsOf: .missing),
+            match: [
+                .error()
+            ],
+            timeOut: .never
+        )
     }
     
 }
@@ -39,5 +33,10 @@ private extension ResourceIdentifier {
     static let sample = ResourceIdentifier(name: "sample", extension: "txt")
     
     static let missing = ResourceIdentifier(name: "missing", extension: "txt")
+    
+    func testURL() -> URL {
+        return Bundle(for: ZeCampTests.self)
+            .url(forResource: name, withExtension: self.extension, subdirectory: "Content")!
+    }
     
 }

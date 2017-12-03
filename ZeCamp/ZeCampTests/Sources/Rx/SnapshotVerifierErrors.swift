@@ -12,6 +12,7 @@ enum SnapshotVerifierErrors: Error, CustomStringConvertible {
     case didNotTerminate
     case tooManyVerifiers(remainder: Int)
     case eventKindMismatch(expected: EventKind, actual: EventKind)
+    case unexpectedValue(expected: Any, actual: Any)
     
     var description: String {
         switch self {
@@ -22,7 +23,9 @@ enum SnapshotVerifierErrors: Error, CustomStringConvertible {
         case .tooManyVerifiers(let remainder):
             return "Observable terminated early. Remaining verifiers count: \(remainder)."
         case .eventKindMismatch(let expected, let actual):
-            return "Expected \(expected), recevied \(actual)."
+            return "Expected event of kind “.\(expected)”, recevied “\(actual)”."
+        case .unexpectedValue(let expected, let actual):
+            return "Expected value “\(expected)”, recevied “\(actual)”."
         }
     }
 }
