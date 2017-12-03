@@ -27,7 +27,7 @@ class AppModelTests: XCTestCase {
         switch result {
         case .completed(let elements):
             XCTAssertEqual(elements.count, 2)
-        case .failed(let elements, _):
+        case .failed(_, _):
             XCTFail("Should not fail")
         }
     }
