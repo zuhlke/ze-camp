@@ -4,6 +4,7 @@ import UIKit
 struct ScheduleScreen: Screen {
     
     var schedule: Schedule
+    var eventDetailsForId: (Int) -> EventDetails?
     
     func makeViewController() -> UIViewController {
         let viewController = UIViewController()
@@ -11,7 +12,7 @@ struct ScheduleScreen: Screen {
         let scheduleTable = ScheduleTableView()
         
         let dataSource = ScheduleDataSource(schedule, { id in
-            let eventScreen = EventScreen(id).makeViewController();
+            let eventScreen = EventScreen(details: self.eventDetailsForId(id)).makeViewController();
             eventScreen.view.backgroundColor = .white
             if #available(iOS 11.0, *) {
                 eventScreen.navigationItem.largeTitleDisplayMode = .never
@@ -74,10 +75,10 @@ struct TimeSlot {
 
 class EventScreen : Screen {
     
-    var eventId = 0
+    var details: EventDetails?
     
-    init(_ id: Int) {
-        self.eventId = id
+    init(details: EventDetails?) {
+        self.details = details
     }
     
     func setupLabelConstraints(_ label: UILabel, _ eventScreen: UIViewController){
@@ -131,12 +132,12 @@ class EventScreen : Screen {
         
         headerLabel.font = UIFont(name: "AAZuehlkeMedium", size: 18)
         
-        guard let event = JsonReader.getJson(FileName: "eventDetails.json", type: DetailsList.self).details.first(where: { $0.id == eventId }) else {
+        guard let details = details else {
             return UIViewController()
         }
         
-        headerLabel.text = event.header
-        infoLabel.text = event.info
+        headerLabel.text = details.header
+        infoLabel.text = details.info
         
         return eventScreen
     }

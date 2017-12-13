@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let resourceProvider = ResourceProvider(folder: "Content")
         let model = AppModel(resourceProvider: resourceProvider)
         
-        let rootScreen = model.schedule.map { scheduleLoadable -> Screen in
-            switch scheduleLoadable {
-            case .loading:
-                return AppLoadingScreen()
-                
-            case .loaded(let schedule):
-                return MainAppScreen(schedule: schedule)
-            }
+        let rootScreen = Observable.zip(model.schedule, model.eventDetailsForId)
+            .map { (scheduleLoadable, eventDetailsForIdLoadable) -> Screen in
+                switch (scheduleLoadable, eventDetailsForIdLoadable) {
+                case (.loaded(let schedule), .loaded(let eventDetailsForId)):
+                    return MainAppScreen(schedule: schedule, eventDetailsForId: eventDetailsForId)
+                case (_, _):
+                    return AppLoadingScreen()
+                }
         }
         
         rootScreen
