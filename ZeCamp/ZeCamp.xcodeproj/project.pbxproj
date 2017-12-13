@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07146CA01FE19753005E6011 /* ContainerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07146C9F1FE19753005E6011 /* ContainerScreen.swift */; };
 		07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
 		07F949E11FE15780008A7BC6 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */; };
 		07F949E41FE188EE008A7BC6 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07146C9F1FE19753005E6011 /* ContainerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScreen.swift; sourceTree = "<group>"; };
 		07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				89200C701FD1B1F30050AFDC /* Abstractions */,
 				246199BA1F30DA1900991818 /* ScheduleScreen.swift */,
 				89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */,
+				07146C9F1FE19753005E6011 /* ContainerScreen.swift */,
 				89200C751FD1B3120050AFDC /* MainAppScreen.swift */,
 			);
 			path = UI;
@@ -613,6 +616,7 @@
 				07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */,
 				89200C791FD1B7430050AFDC /* UIView.swift in Sources */,
 				89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */,
+				07146CA01FE19753005E6011 /* ContainerScreen.swift in Sources */,
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
 				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
 				07F949E11FE15780008A7BC6 /* NSLayoutConstraint.swift in Sources */,

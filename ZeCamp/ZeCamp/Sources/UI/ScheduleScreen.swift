@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RxSwift
 
 struct ScheduleScreen: Screen {
     
@@ -12,12 +13,9 @@ struct ScheduleScreen: Screen {
         let scheduleTable = ScheduleTableView()
         
         let dataSource = ScheduleDataSource(schedule, { event in
-            let eventScreen = EventScreen(details: self.eventDetailsForId(event.summary.id)).makeViewController();
-            eventScreen.view.backgroundColor = .white
-            if #available(iOS 11.0, *) {
-                eventScreen.navigationItem.largeTitleDisplayMode = .never
-            }
-            viewController.navigationController?.pushViewController(eventScreen, animated: true)
+            let content = Observable<Screen>.just(EventScreen(details: self.eventDetailsForId(event.summary.id)))
+            let screen = ContainerScreen(content: content).makeViewController()
+            viewController.navigationController?.pushViewController(screen, animated: true)
         })
         
         scheduleTable.strongDataSource = dataSource
@@ -103,15 +101,11 @@ class EventScreen : Screen {
     func constrainStackView(StackView stackView: UIStackView, ViewController eventScreen: UIViewController) {
         let container = eventScreen.view!
         
-        if #available(iOS 11.0, *) {
-            container.addSubview(stackView)
-            stackView.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor).isActive = true
-            stackView.trailingAnchor.constraint(equalTo: container.safeAreaLayoutGuide.trailingAnchor).isActive = true
-            stackView.leftAnchor.constraint(equalTo: container.safeAreaLayoutGuide.leftAnchor).isActive = true
-            stackView.rightAnchor.constraint(equalTo: container.safeAreaLayoutGuide.rightAnchor).isActive = true
-        } else {
-            // Fallback on earlier versions
-        }
+        container.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: container.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: container.safeAreaLayoutGuide.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: container.safeAreaLayoutGuide.rightAnchor).isActive = true
     }
     
     func makeViewController( ) -> UIViewController {
@@ -139,6 +133,8 @@ class EventScreen : Screen {
         headerLabel.text = details.header
         infoLabel.text = details.info
         
+        eventScreen.view.backgroundColor = .white
+        eventScreen.navigationItem.largeTitleDisplayMode = .never
         return eventScreen
     }
 }
