@@ -1,40 +1,39 @@
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    
+    private let bag = DisposeBag()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
         
-        let schedule = JsonReader.getJson(FileName: "schedule.json", type: Schedule.self)
+        window.tintColor = UIColor(named: "teal")
         
-        let scheduleScreen = ScheduleScreen(schedule: schedule)
+        let resourceProvider = ResourceProvider(folder: "Content")
+        let model = AppModel(resourceProvider: resourceProvider)
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            .font: UIFont(name: "AAZuehlke", size: 18)!
-            ], for: .normal)
-        
-        let navigation = UINavigationController(rootViewController: scheduleScreen.makeViewController())
-        
-        var foregroundColor = UIColor.blue
-        if #available(iOS 11.0, *) {
-            foregroundColor = UIColor(named: "teal") ?? foregroundColor
-            navigation.navigationBar.prefersLargeTitles = true
-            navigation.navigationBar.largeTitleTextAttributes = [
-                .font: UIFont(name: "AAZuehlkeMedium", size: 28)!,
-            ]
+        let rootScreen = model.schedule.map { scheduleLoadable -> Screen in
+            switch scheduleLoadable {
+            case .loading:
+                return AppLoadingScreen()
+                
+            case .loaded(let schedule):
+                return MainAppScreen(schedule: schedule)
+            }
         }
         
-        navigation.navigationBar.titleTextAttributes = [
-            .font: UIFont(name: "AAZuehlkeMedium", size: 18)!,
-        ]
-        window.rootViewController = navigation
-        window.tintColor = foregroundColor
-        
+        rootScreen
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { screen in
+                window.rootViewController = screen.makeViewController()
+            })
+            .disposed(by: bag)
         
         return true
     }
