@@ -5,7 +5,7 @@ struct ScheduleScreen: Screen {
     
     var schedule: Schedule
     
-    func makeViewController() -> UIViewController {        
+    func makeViewController() -> UIViewController {
         let viewController = UIViewController()
         viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
