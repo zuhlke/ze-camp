@@ -5,7 +5,6 @@ import RxSwift
 struct ScheduleScreen: Screen {
     
     var schedule: ScheduleModel
-    var eventDetailsForId: (Int) -> EventDetails?
     
     func makeViewController() -> UIViewController {
         let viewController = UIViewController()
@@ -13,7 +12,14 @@ struct ScheduleScreen: Screen {
         let scheduleTable = ScheduleTableView()
         
         let dataSource = ScheduleDataSource(schedule, { event in
-            let content = Observable<Screen>.just(EventScreen(details: self.eventDetailsForId(event.summary.id)))
+            let content = event.details.map { loadableDetails -> Screen in
+                switch loadableDetails {
+                case .loading:
+                    return AppLoadingScreen()
+                case .loaded(let details):
+                    return EventScreen(details: details)
+                }
+            }
             let screen = ContainerScreen(content: content).makeViewController()
             viewController.navigationController?.pushViewController(screen, animated: true)
         })

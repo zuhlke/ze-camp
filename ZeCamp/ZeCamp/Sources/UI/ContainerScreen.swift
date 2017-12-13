@@ -28,7 +28,7 @@ struct ContainerScreen: Screen {
             navigationItem.largeTitleDisplayMode = .never
             
             var previous: UIViewController?
-            content.subscribe(onNext: { [weak self] screen in
+            content.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] screen in
                 guard let s = self else { return }
                 let viewController = screen.makeViewController()
                 previous?.willMove(toParentViewController: nil)

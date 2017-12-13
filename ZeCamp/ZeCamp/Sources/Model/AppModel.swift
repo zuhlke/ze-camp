@@ -9,7 +9,6 @@ struct AppModel {
     }
     
     var schedule: Observable<Loadable<ScheduleModel>>
-    var eventDetailsForId: Observable<Loadable<(Int) -> EventDetails?>>
     
     init(resourceProvider: ResourceProvider) {
         
@@ -18,15 +17,7 @@ struct AppModel {
             decoder.dateDecodingStrategy = .iso8601
             
             return .loaded(try decoder.decode(DetailsList.self, from: data).details)
-        }.startWith(.loading).share(replay: 1, scope: .forever)
-        
-        eventDetailsForId = eventDetails.map { loaded in
-            return loaded.map { details in
-                return { id in
-                    details.first { id == $0.id }
-                }
-            }
-        }
+        }.delay(10.0, scheduler: MainScheduler.instance).startWith(.loading).share(replay: 1, scope: .forever)
         
         schedule = resourceProvider.load(contentsOf: .schedule).map { data in
             let decoder = JSONDecoder()

@@ -3,8 +3,8 @@ import UIKit
 struct MainAppScreen: Screen {
     private var scheduleScreen: Screen
     
-    init(schedule: ScheduleModel, eventDetailsForId: @escaping (Int) -> EventDetails?) {
-        scheduleScreen = ScheduleScreen(schedule: schedule, eventDetailsForId: eventDetailsForId)
+    init(schedule: ScheduleModel) {
+        scheduleScreen = ScheduleScreen(schedule: schedule)
     }
     
     func makeViewController() -> UIViewController {
