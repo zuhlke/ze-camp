@@ -72,7 +72,7 @@ struct TimeSlot {
     let events: [Event]
 }
 
-class EventScreen : ScreenProtocol{
+class EventScreen : Screen {
     
     var eventId = 0
     
