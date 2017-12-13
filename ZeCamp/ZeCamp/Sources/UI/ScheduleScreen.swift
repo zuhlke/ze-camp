@@ -11,8 +11,8 @@ struct ScheduleScreen: Screen {
         viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
         
-        let dataSource = ScheduleDataSource(schedule, { id in
-            let eventScreen = EventScreen(details: self.eventDetailsForId(id)).makeViewController();
+        let dataSource = ScheduleDataSource(schedule, { event in
+            let eventScreen = EventScreen(details: self.eventDetailsForId(event.summary.id)).makeViewController();
             eventScreen.view.backgroundColor = .white
             if #available(iOS 11.0, *) {
                 eventScreen.navigationItem.largeTitleDisplayMode = .never
@@ -146,10 +146,9 @@ class EventScreen : Screen {
 class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     let timeSlots: [TimeSlot]
-    var navigate: (Int) -> Void
+    var navigate: (EventModel) -> Void
     
-    
-    init(_ schedule: ScheduleModel, _ navigate: @escaping (Int) -> Void) {
+    init(_ schedule: ScheduleModel, _ navigate: @escaping (EventModel) -> Void) {
         self.timeSlots = schedule.asOrderedTimeSlots()
         self.navigate = navigate
     }
@@ -158,8 +157,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         defer {
             tableView.deselectRow(at: indexPath, animated: true)
         }
-        let id = timeSlots[indexPath.section].events[indexPath.row].summary.id
-        navigate(id)
+        navigate(timeSlots[indexPath.section].events[indexPath.row])
     }
     
     @available(iOS 2.0, *)
