@@ -3,7 +3,7 @@ import UIKit
 
 struct ScheduleScreen: Screen {
     
-    var schedule: Schedule
+    var schedule: ScheduleModel
     var eventDetailsForId: (Int) -> EventDetails?
     
     func makeViewController() -> UIViewController {
@@ -70,7 +70,7 @@ class ScheduleTableView: UITableView {
 
 struct TimeSlot {
     let date: Date
-    let events: [Event]
+    let events: [EventModel]
 }
 
 class EventScreen : Screen {
@@ -149,7 +149,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var navigate: (Int) -> Void
     
     
-    init(_ schedule: Schedule, _ navigate: @escaping (Int) -> Void) {
+    init(_ schedule: ScheduleModel, _ navigate: @escaping (Int) -> Void) {
         self.timeSlots = schedule.asOrderedTimeSlots()
         self.navigate = navigate
     }
@@ -158,7 +158,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         defer {
             tableView.deselectRow(at: indexPath, animated: true)
         }
-        let id = timeSlots[indexPath.section].events[indexPath.row].id
+        let id = timeSlots[indexPath.section].events[indexPath.row].summary.id
         navigate(id)
     }
     
@@ -179,7 +179,7 @@ class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = self.timeSlots[indexPath.section].events[indexPath.row]
+        let event = self.timeSlots[indexPath.section].events[indexPath.row].summary
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         cell.textLabel?.text = event.name
@@ -203,7 +203,7 @@ fileprivate let timeFormatter: DateFormatter = {
     return formatter
 }()
 
-fileprivate extension Event {
+fileprivate extension EventSummary {
     var startTime: String {
         return timeFormatter.string(from: date)
     }
@@ -214,10 +214,10 @@ fileprivate extension Event {
     }
 }
 
-fileprivate extension Schedule {
+fileprivate extension ScheduleModel {
     
     func asOrderedTimeSlots() -> [TimeSlot] {
-        return self.events.group(by: { $0.date }).map { date, events in
+        return self.events.group(by: { $0.summary.date }).map { date, events in
             return TimeSlot(date: date, events: events)
             }.sorted(by: { timeSlot, otherTimeSlot in
                 return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending

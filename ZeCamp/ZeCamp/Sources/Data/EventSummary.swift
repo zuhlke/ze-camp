@@ -9,3 +9,11 @@ struct EventDetails: Codable {
 struct DetailsList: Codable {
     let details: [EventDetails]
 }
+
+struct EventSummary: Codable {
+    let date: Date
+    let durationInMinutes: Int
+    let name: String
+    let location: String
+    let id: Int
+}

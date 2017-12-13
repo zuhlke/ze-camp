@@ -7,7 +7,7 @@ struct AppModel {
         case missingScheduleFile
     }
     
-    var schedule: Observable<Loadable<Schedule>>
+    var schedule: Observable<Loadable<ScheduleModel>>
     var eventDetailsForId: Observable<Loadable<(Int) -> EventDetails?>>
     
     init(resourceProvider: ResourceProvider) {
@@ -17,7 +17,7 @@ struct AppModel {
             decoder.dateDecodingStrategy = .iso8601
             
             return .loaded(try decoder.decode(DetailsList.self, from: data).details)
-        }.startWith(.loading).shareReplay(1)
+        }.startWith(.loading).share(replay: 1, scope: .forever)
         
         eventDetailsForId = eventDetails.map { loaded in
             return loaded.map { details in
@@ -31,7 +31,8 @@ struct AppModel {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             
-            return .loaded(try decoder.decode(Schedule.self, from: data))
+            let schedule = try decoder.decode(Schedule.self, from: data)
+            return .loaded(ScheduleModel(events: schedule.events.map { EventModel(summary: $0) }))
         }.startWith(.loading)
     }
     

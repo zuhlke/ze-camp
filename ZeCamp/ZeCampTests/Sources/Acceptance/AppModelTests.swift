@@ -38,7 +38,8 @@ class AppModelTests: XCTestCase {
                 .next(verify: { loadable in
                     switch loadable {
                     case .loading: XCTFail("Unexpected loaded value")
-                    case .loaded(_): break
+                    case .loaded(let schedule):
+                        XCTAssertEqual(schedule.events.count, 1)
                     }
                 }),
                 .completed()
