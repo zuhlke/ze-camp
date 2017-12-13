@@ -5,6 +5,7 @@ struct AppModel {
     
     enum Errors: Error {
         case missingScheduleFile
+        case missingDetails(id: Int)
     }
     
     var schedule: Observable<Loadable<ScheduleModel>>
@@ -32,7 +33,21 @@ struct AppModel {
             decoder.dateDecodingStrategy = .iso8601
             
             let schedule = try decoder.decode(Schedule.self, from: data)
-            return .loaded(ScheduleModel(events: schedule.events.map { EventModel(summary: $0) }))
+            let events = schedule.events.map { summary in
+                return EventModel(summary: summary, details: eventDetails.map { detailLoadable in
+                    switch detailLoadable {
+                    case .loading:
+                        return .loading
+                    case .loaded(let details):
+                        guard let detail = details.first(where: { summary.id == $0.id }) else {
+                            throw Errors.missingDetails(id: summary.id)
+                        }
+                        return .loaded(detail)
+                    }
+                })
+            }
+            let scheduleModel = ScheduleModel(events: events)
+            return .loaded(scheduleModel)
         }.startWith(.loading)
     }
     
