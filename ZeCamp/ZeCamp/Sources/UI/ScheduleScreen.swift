@@ -12,7 +12,14 @@ struct ScheduleScreen: Screen {
         let scheduleTable = ScheduleTableView()
         
         let dataSource = ScheduleDataSource(schedule, { event in
-            let content = event.details.map { loadableDetails -> Screen in
+            let content = event.details
+                .anticipateImminentValue { loadableDetails in
+                    switch loadableDetails {
+                    case .loading: return false
+                    case .loaded(_): return true
+                    }
+                }
+                .map { loadableDetails -> Screen in
                 switch loadableDetails {
                 case .loading:
                     return AppLoadingScreen()

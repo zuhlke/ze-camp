@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07146CA01FE19753005E6011 /* ContainerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07146C9F1FE19753005E6011 /* ContainerScreen.swift */; };
+		07146CA21FE19E33005E6011 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07146CA11FE19E33005E6011 /* ObservableType.swift */; };
+		07146CA61FE2B3AA005E6011 /* AnticipateImminentValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07146CA51FE2B3AA005E6011 /* AnticipateImminentValueTests.swift */; };
 		07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
 		07F949E11FE15780008A7BC6 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */; };
 		07F949E41FE188EE008A7BC6 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */; };
@@ -82,6 +84,8 @@
 
 /* Begin PBXFileReference section */
 		07146C9F1FE19753005E6011 /* ContainerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScreen.swift; sourceTree = "<group>"; };
+		07146CA11FE19E33005E6011 /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
+		07146CA51FE2B3AA005E6011 /* AnticipateImminentValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnticipateImminentValueTests.swift; sourceTree = "<group>"; };
 		07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -165,11 +169,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07146CA31FE2B34D005E6011 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */,
+				07146CA51FE2B3AA005E6011 /* AnticipateImminentValueTests.swift */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		07146CA41FE2B36A005E6011 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
 		07F949E21FE167D0008A7BC6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				24A559041F34E245009B9884 /* Sequence.swift */,
 				8B29E6A21F50CC7900F259AE /* Bundle.swift */,
+				07146CA11FE19E33005E6011 /* ObservableType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,8 +290,8 @@
 		892609341F6031F500DB78E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8947A43E1F2B3FF600A3E463 /* ZeCampTests.swift */,
-				89E39B3F1FC1D6AB0038958D /* ResourceProviderTests.swift */,
+				07146CA41FE2B36A005E6011 /* Project */,
+				07146CA31FE2B34D005E6011 /* Unit */,
 				89AFAC571FD1C08100656988 /* Rx */,
 				89AFAC541FD1BBD700656988 /* Acceptance */,
 			);
@@ -613,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07146CA21FE19E33005E6011 /* ObservableType.swift in Sources */,
 				07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */,
 				89200C791FD1B7430050AFDC /* UIView.swift in Sources */,
 				89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */,
@@ -642,6 +665,7 @@
 				89AFAC561FD1BBEB00656988 /* AppModelTests.swift in Sources */,
 				89AFAC5A1FD1C12600656988 /* Snapshot.swift in Sources */,
 				89E39B401FC1D6AB0038958D /* ResourceProviderTests.swift in Sources */,
+				07146CA61FE2B3AA005E6011 /* AnticipateImminentValueTests.swift in Sources */,
 				8947A43F1F2B3FF600A3E463 /* ZeCampTests.swift in Sources */,
 				89AFAC601FD3572900656988 /* SnapshotVerifier.swift in Sources */,
 				89AFAC5E1FD1C27E00656988 /* XCTestCaseObservableSnapshotsTests.swift in Sources */,
