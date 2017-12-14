@@ -3,7 +3,7 @@ import UIKit
 struct MainAppScreen: Screen {
     private var scheduleScreen: Screen
     
-    init(schedule: Schedule) {
+    init(schedule: ScheduleModel) {
         scheduleScreen = ScheduleScreen(schedule: schedule)
     }
     

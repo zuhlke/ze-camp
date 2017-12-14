@@ -1,17 +1,29 @@
 import Foundation
 import UIKit
+import RxSwift
 
 struct ScheduleScreen: Screen {
     
-    var schedule: Schedule
+    var schedule: ScheduleModel
     
     func makeViewController() -> UIViewController {
-        let dataSource = ScheduleDataSource(schedule)
-        
         let viewController = UIViewController()
         viewController.title = "Schedule"
         let scheduleTable = ScheduleTableView()
-
+        
+        let dataSource = ScheduleDataSource(schedule, { event in
+            let content = event.details.map { loadableDetails -> Screen in
+                switch loadableDetails {
+                case .loading:
+                    return AppLoadingScreen()
+                case .loaded(let details):
+                    return EventScreen(details: details)
+                }
+            }
+            let screen = ContainerScreen(content: content).makeViewController()
+            viewController.navigationController?.pushViewController(screen, animated: true)
+        })
+        
         scheduleTable.strongDataSource = dataSource
         scheduleTable.rowHeight = UITableViewAutomaticDimension
         scheduleTable.estimatedRowHeight = 50
@@ -40,11 +52,8 @@ struct ScheduleScreen: Screen {
         footer.layoutIfNeeded()
         footer.frame.size = footer.systemLayoutSizeFitting(UILayoutFittingExpandedSize)
         
-        let delegate = ScheduleDelegate()
-        delegate.viewController = viewController
-        scheduleTable.strongDelegate = delegate
+        scheduleTable.strongDelegate = dataSource
         viewController.view.addFillingSubview(scheduleTable)
-
         
         return viewController
     }
@@ -65,29 +74,92 @@ class ScheduleTableView: UITableView {
 
 struct TimeSlot {
     let date: Date
-    let events: [Event]
+    let events: [EventModel]
 }
 
-class ScheduleDelegate: NSObject, UITableViewDelegate {
-    weak var viewController: UIViewController?
+class EventScreen : Screen {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emptyScreen = UIViewController()
-        emptyScreen.title = "Event"
-        emptyScreen.view.backgroundColor = .white
-        emptyScreen.navigationItem.largeTitleDisplayMode = .never
-        viewController?.navigationController?.pushViewController(emptyScreen, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+    var details: EventDetails?
+    
+    init(details: EventDetails?) {
+        self.details = details
     }
     
+    func setupLabelConstraints(_ label: UILabel, _ eventScreen: UIViewController){
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(greaterThanOrEqualTo: eventScreen.view.centerXAnchor).isActive = true
+        label.widthAnchor.constraint(equalTo: eventScreen.view.widthAnchor, constant: -20).isActive = true
+        label.numberOfLines = 0
+    }
+    
+    func getDefaultStackView(_ labels: [UILabel]) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: labels)
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.distribution = .equalSpacing
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }
+    
+    func constrainStackView(StackView stackView: UIStackView, ViewController eventScreen: UIViewController) {
+        let container = eventScreen.view!
+        
+        container.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: container.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: container.safeAreaLayoutGuide.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: container.safeAreaLayoutGuide.rightAnchor).isActive = true
+    }
+    
+    func makeViewController( ) -> UIViewController {
+        
+        let eventScreen = UIViewController()
+        eventScreen.title = "Event"
+        
+        let headerLabel = UILabel()
+        let infoLabel = UILabel()
+        
+        let labels: [UILabel] = [headerLabel, infoLabel]
+        labels.forEach { (label) in
+            label.numberOfLines = 0
+        }
+        
+        let stackView = getDefaultStackView(labels)
+        constrainStackView(StackView: stackView, ViewController: eventScreen)
+        
+        headerLabel.font = UIFont(name: "AAZuehlkeMedium", size: 18)
+        
+        guard let details = details else {
+            return UIViewController()
+        }
+        
+        headerLabel.text = details.header
+        infoLabel.text = details.info
+        
+        eventScreen.view.backgroundColor = .white
+        eventScreen.navigationItem.largeTitleDisplayMode = .never
+        return eventScreen
+    }
 }
 
-class ScheduleDataSource: NSObject, UITableViewDataSource {
+class ScheduleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     let timeSlots: [TimeSlot]
+    var navigate: (EventModel) -> Void
     
-    init(_ schedule: Schedule) {
+    init(_ schedule: ScheduleModel, _ navigate: @escaping (EventModel) -> Void) {
         self.timeSlots = schedule.asOrderedTimeSlots()
+        self.navigate = navigate
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        navigate(timeSlots[indexPath.section].events[indexPath.row])
     }
     
     @available(iOS 2.0, *)
@@ -107,12 +179,12 @@ class ScheduleDataSource: NSObject, UITableViewDataSource {
     
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = self.timeSlots[indexPath.section].events[indexPath.row]
+        let event = self.timeSlots[indexPath.section].events[indexPath.row].summary
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         cell.textLabel?.text = event.name
         cell.detailTextLabel?.text = "\(event.startTime) - \(event.endTime) - \(event.location)"
-
+        
         return cell
     }
 }
@@ -131,7 +203,7 @@ fileprivate let timeFormatter: DateFormatter = {
     return formatter
 }()
 
-fileprivate extension Event {
+fileprivate extension EventSummary {
     var startTime: String {
         return timeFormatter.string(from: date)
     }
@@ -142,14 +214,14 @@ fileprivate extension Event {
     }
 }
 
-fileprivate extension Schedule {
+fileprivate extension ScheduleModel {
     
     func asOrderedTimeSlots() -> [TimeSlot] {
-        return self.events.group(by: { $0.date }).map { date, events in
+        return self.events.group(by: { $0.summary.date }).map { date, events in
             return TimeSlot(date: date, events: events)
-        }.sorted(by: { timeSlot, otherTimeSlot in
-            return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending
-        })
+            }.sorted(by: { timeSlot, otherTimeSlot in
+                return timeSlot.date.compare(otherTimeSlot.date) == ComparisonResult.orderedAscending
+            })
     }
 }
 
@@ -158,3 +230,4 @@ fileprivate extension TimeSlot {
         return dayAndTimeFormatter.string(from: date)
     }
 }
+

@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
+		07146CA01FE19753005E6011 /* ContainerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07146C9F1FE19753005E6011 /* ContainerScreen.swift */; };
+		07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BA1F30DA1900991818 /* ScheduleScreen.swift */; };
+		07F949E11FE15780008A7BC6 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */; };
+		07F949E41FE188EE008A7BC6 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */; };
 		246199BD1F30DC1800991818 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246199BC1F30DC1800991818 /* Schedule.swift */; };
 		24A559051F34E245009B9884 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A559041F34E245009B9884 /* Sequence.swift */; };
+		44792B581F73C54A001E5E40 /* EventSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44792B571F73C54A001E5E40 /* EventSummary.swift */; };
 		8910881B1F4F14E6004148A4 /* AAZuehlke-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */; };
 		8910881C1F4F14E6004148A4 /* AAZuehlke.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 891088191F4F14AA004148A4 /* AAZuehlke.ttf */; };
 		8910881D1F4F14E6004148A4 /* AAZuehlkeMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */; };
@@ -42,7 +46,6 @@
 		89E39B4F1FC1DA050038958D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89C7474B1F6147FB00AB24BC /* RxSwift.framework */; };
 		89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FCE41D1FBDE43C00C729A0 /* AppModel.swift */; };
 		8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B29E6A21F50CC7900F259AE /* Bundle.swift */; };
-		8BD4890C1F73C842000ECBD7 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4890B1F73C842000ECBD7 /* NSLayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,9 +81,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07146C9F1FE19753005E6011 /* ContainerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerScreen.swift; sourceTree = "<group>"; };
+		07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		246199BA1F30DA1900991818 /* ScheduleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleScreen.swift; sourceTree = "<group>"; };
 		246199BC1F30DC1800991818 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		24A559041F34E245009B9884 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
+		44792B571F73C54A001E5E40 /* EventSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSummary.swift; sourceTree = "<group>"; };
 		891088181F4F14AA004148A4 /* AAZuehlke-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AAZuehlke-italic.ttf"; sourceTree = "<group>"; };
 		891088191F4F14AA004148A4 /* AAZuehlke.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlke.ttf; sourceTree = "<group>"; };
 		8910881A1F4F14AA004148A4 /* AAZuehlkeMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AAZuehlkeMedium.ttf; sourceTree = "<group>"; };
@@ -159,13 +165,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		24A559031F34E1DF009B9884 /* Extensions */ = {
+		07F949E21FE167D0008A7BC6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8B29E6A21F50CC7900F259AE /* Bundle.swift */,
 				24A559041F34E245009B9884 /* Sequence.swift */,
+				8B29E6A21F50CC7900F259AE /* Bundle.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		24A559031F34E1DF009B9884 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				44792B571F73C54A001E5E40 /* EventSummary.swift */,
+				246199BC1F30DC1800991818 /* Schedule.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		891088151F4F14AA004148A4 /* ze-camp-assets */ = {
@@ -204,6 +219,7 @@
 				89200C701FD1B1F30050AFDC /* Abstractions */,
 				246199BA1F30DA1900991818 /* ScheduleScreen.swift */,
 				89200C731FD1B2BB0050AFDC /* AppLoadingScreen.swift */,
+				07146C9F1FE19753005E6011 /* ContainerScreen.swift */,
 				89200C751FD1B3120050AFDC /* MainAppScreen.swift */,
 			);
 			path = UI;
@@ -229,9 +245,10 @@
 		8926091F1F60310900DB78E1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				24A559031F34E1DF009B9884 /* Extensions */,
+				07F949E21FE167D0008A7BC6 /* Extensions */,
 				89200C6C1FD1A9CA0050AFDC /* Containers */,
 				8931353E1FC1989C009B54DE /* Environment */,
+				24A559031F34E1DF009B9884 /* Data */,
 				89FCE41C1FBDE42A00C729A0 /* Model */,
 				89200C6F1FD1B1E70050AFDC /* UI */,
 				8947A4291F2B3FF600A3E463 /* AppDelegate.swift */,
@@ -434,7 +451,7 @@
 		89FCE41C1FBDE42A00C729A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				246199BC1F30DC1800991818 /* Schedule.swift */,
+				07F949E31FE188EE008A7BC6 /* ScheduleModel.swift */,
 				89FCE41D1FBDE43C00C729A0 /* AppModel.swift */,
 			);
 			path = Model;
@@ -596,18 +613,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F949E01FE1572D008A7BC6 /* ScheduleScreen.swift in Sources */,
 				89200C791FD1B7430050AFDC /* UIView.swift in Sources */,
 				89200C761FD1B3130050AFDC /* MainAppScreen.swift in Sources */,
+				07146CA01FE19753005E6011 /* ContainerScreen.swift in Sources */,
 				89FCE41E1FBDE43C00C729A0 /* AppModel.swift in Sources */,
 				8B29E6A31F50CC7900F259AE /* Bundle.swift in Sources */,
+				07F949E11FE15780008A7BC6 /* NSLayoutConstraint.swift in Sources */,
 				89200C6E1FD1A9E40050AFDC /* Loadable.swift in Sources */,
-				8BD4890C1F73C842000ECBD7 /* NSLayoutConstraint.swift in Sources */,
-				246199BB1F30DA1900991818 /* ScheduleScreen.swift in Sources */,
 				89200C721FD1B2210050AFDC /* Screen.swift in Sources */,
 				246199BD1F30DC1800991818 /* Schedule.swift in Sources */,
 				89200C741FD1B2BB0050AFDC /* AppLoadingScreen.swift in Sources */,
 				893135401FC198F3009B54DE /* ResourceProvider.swift in Sources */,
 				8947A42A1F2B3FF600A3E463 /* AppDelegate.swift in Sources */,
+				07F949E41FE188EE008A7BC6 /* ScheduleModel.swift in Sources */,
+				44792B581F73C54A001E5E40 /* EventSummary.swift in Sources */,
 				24A559051F34E245009B9884 /* Sequence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

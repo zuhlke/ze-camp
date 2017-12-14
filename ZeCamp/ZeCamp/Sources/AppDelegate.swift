@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let resourceProvider = ResourceProvider(folder: "Content")
         let model = AppModel(resourceProvider: resourceProvider)
         
-        let rootScreen = model.schedule.map { scheduleLoadable -> Screen in
-            switch scheduleLoadable {
-            case .loading:
-                return AppLoadingScreen()
-                
-            case .loaded(let schedule):
-                return MainAppScreen(schedule: schedule)
-            }
+        let rootScreen = model.schedule
+            .map { scheduleLoadable -> Screen in
+                switch scheduleLoadable {
+                case .loaded(let schedule):
+                    return MainAppScreen(schedule: schedule)
+                case .loading:
+                    return AppLoadingScreen()
+                }
         }
         
         rootScreen
