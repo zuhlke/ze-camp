@@ -17,7 +17,7 @@ struct AppModel {
             decoder.dateDecodingStrategy = .iso8601
             
             return .loaded(try decoder.decode(DetailsList.self, from: data).details)
-        }.delay(10.0, scheduler: MainScheduler.instance).startWith(.loading).share(replay: 1, scope: .forever)
+        }.startWith(.loading).share(replay: 1, scope: .forever)
         
         schedule = resourceProvider.load(contentsOf: .schedule).map { data in
             let decoder = JSONDecoder()
